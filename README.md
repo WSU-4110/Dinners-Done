@@ -47,5 +47,7 @@ This will ensure that both of us can complete work at times convenient to us and
 
 5/18 
 -Submission of basic group details (Mohammed submitted group 4's details to course site while I was in class all day) 
--PowerPoint begun by Mohammed and shared with group members 
+-PowerPoint begun by Mohammed and shared with group members
 -K. Karnick completed preliminary class structure coding and began working function for printing
+5/19
+-Mohammed verified PowerPoint structure with instructor
