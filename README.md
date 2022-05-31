@@ -54,18 +54,18 @@ This will ensure that both of us can complete work at times convenient to us and
 -Mohammed verified PowerPoint structure with instructor
 
 5/26
--Kristina shared a document to complete the SRS assignment
--Cody added Functional requirements about the recipe database
+- Kristina shared a document to complete the SRS assignment
+- Cody added Functional requirements about the recipe database
 
 5/28
--Mohammed added functional requirements 
--Kristina added functional and non functional requirements
--Bruno added Functional
--Cody added Functional Requirements
--Kristina revised and fixed SRS sheet in the correct order
--Mohammed filled out Functional Requirement templates
+- Mohammed added functional requirements 
+- Kristina added functional and non functional requirements
+- Bruno added Functional
+- Cody added Functional Requirements
+- Kristina revised and fixed SRS sheet in the correct order
+- Mohammed filled out Functional Requirement templates
 
 
 5/31 
--Kristina did final editing on SRS assignment
--Submission of SRS assignment submitted by Kristina 
+- Kristina did final editing on SRS assignment
+- Submission of SRS assignment submitted by Kristina 
