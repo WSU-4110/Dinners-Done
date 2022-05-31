@@ -67,5 +67,5 @@ This will ensure that both of us can complete work at times convenient to us and
 
 
 5/31 
-- Kristina did final editing on SRS assignment
+-Kristina did final editing on SRS assignment
 -Submission of SRS assignment submitted by Kristina 
