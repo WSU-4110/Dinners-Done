@@ -60,7 +60,7 @@ This will ensure that both of us can complete work at times convenient to us and
 5/28
 - Mohammed added functional requirements 
 - Kristina added functional and non functional requirements
-- Bruno added Functional
+- Bruno added Functional Requirements 
 - Cody added Functional Requirements
 - Kristina revised and fixed SRS sheet in the correct order
 - Mohammed filled out Functional Requirement templates
