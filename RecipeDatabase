@@ -7,3 +7,5 @@ Kristina and I had some issues getting the DB to work in a new environment, it s
 if needed, replace the string url line for the database to :
 String url = "jdbc:sqlite:CSC4100Project/src/main/resources/RecipesDB.db"; //path from content root
 the sqlite-jar should already be there as a dependancy so this should be the only major issue is getting everyones path to the DB to work.
+If it still does not work, go to file -> project structure, then modules tab to make sure the sqlite-jar is in there, and feel free to message me 
+to figure things out as well, there is plenty of issues I am sure I have not run into so we may have to solve them together.
