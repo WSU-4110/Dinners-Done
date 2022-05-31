@@ -2,3 +2,8 @@ When cloning the repo do not create a folder for it, just go to the directory yo
 I have commented out code that can easily show all the data in the database to make it easier for us to work on, just uncomment as needed.
 I have also included the functionality and queries needed for the searchability.
 There is 3 recipes in there for now until I know this will work out for us then I can add more.
+
+Kristina and I had some issues getting the DB to work in a new environment, it seemed the biggest problem was the path to the database.
+if needed, replace the string url line for the database to :
+String url = "jdbc:sqlite:CSC4100Project/src/main/resources/RecipesDB.db"; //path from content root
+the sqlite-jar should already be there as a dependancy so this should be the only major issue is getting everyones path to the DB to work.
