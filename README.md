@@ -61,6 +61,7 @@ As the project progresses, we can add functionality or detailing if possible, bu
 - Kristina added functional and non functional requirements
 - Bruno added Functional Requirements 
 - Cody added Functional Requirements
+- Hilda added non functional requirements
 - Kristina revised and fixed SRS sheet in the correct order
 - Mohammed filled out Functional Requirement templates
 
