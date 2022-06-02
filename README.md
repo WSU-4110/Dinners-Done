@@ -21,6 +21,8 @@ Coding components:
 -function for adding Recipe class objects
     *decided on one set structural array that contains every possible item...this will make combining arrays into one "final" easiest to 
     implement within course timeline
+    
+ The development of this project will be a combination of integrated and iterative, with an Agile approach.  Basic functionality is the goal of Sprint 1.  As the concurrent sprints are begun, we will address which functional requirements that have not been implemented are of the most importance and assign those first.  Each sprint should produce a working implementation that builds upon the last.  
 
 
 BELOW WILL BE A LIST OF MINUTES FROM MEETINGS
