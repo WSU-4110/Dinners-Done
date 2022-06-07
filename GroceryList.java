@@ -1,3 +1,9 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+
 public class GroceryList {
 
              //temp set array lists to 30
@@ -50,6 +56,27 @@ public class GroceryList {
     public String[] getUnitList() {
         return unitList;
     }
+              //TODO:  connect to website input info (boxes)
+    public void getInfoToAddToMainList(Connection c) throws SQLException {
+             //TODO:  change the query to match recipe db table row names
+        String query = "select INGREDIENT, QUANTITY, UNIT from RECIPES";
+        try (Statement s = c.createStatement() ) {
+            ResultSet r = s.executeQuery(query);
+                  /*to allow for multiples of the same recipe, use code below and
+                    add loop to multiply the addToIngredient list by the multiple
+                   */
+            while(r.next() ){
+                String newIngredient = r.getString("INGREDIENT");
+                int newQuantity = r.getInt("QUANTITY");
+                addToIngredientList(newIngredient, newQuantity);
+            }
+                       //TODO:  Fix SQLException (JDBC research needed)
+        } /*catch (SQLException ex) {
+            JDBCTutorialUtilities.printSQLException(ex);
+        } */catch (Exception ex2) {
+            ex2.printStackTrace(System.err);
+        }
+    }
 
     //following code adds to existing quantity of an ingredient
     public void addToIngredientList(String newIngredient, int newQuantity) {
@@ -59,4 +86,5 @@ public class GroceryList {
             }
         }
     }
+
 }
