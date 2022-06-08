@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dinners Done</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <nav class="menu">
+    <input type="checkbox" id="toggle-bar">
+    <label for="toggle-bar" class='btn'>
+      <i class="fa fa-bars"></i>
+    </label>
+
+    <ul>
+      <li class="nav"> <a href="index.html">Home</a></li>
+      <li class="nav"> <a href="recipes.html">Recipes</a></li>
+      <li class="nav"> <a href="login.html">Login</a></li>
+      <li class="nav"> <a class="active" href="signup.html">Signup</a></li>
+    </ul>
+  </nav>
+  <section>
+    <div class="container">
+      <div class="title"><span>Register</span></div>
+
+      <div id="error"></div>
+      <form id="form" action="" method="GET">
+
+        <div class="text">
+
+          <input type="text" placeholder="Enter Username" required>
+        </div>
+
+        <div class="text">
+          <input type="text" id="email" placeholder="Enter Email" required>
+        </div>
+
+        <div class="text">
+          <input type="password" placeholder="Enter Password" id="password">
+        </div>
+        <div class="text">
+          <input type="password" autofocus placeholder="Confirm password" id="password2">
+        </div>
+
+        <div class="buttn">
+          <button type="submit">Create Account</button>
+        </div>
+        <div class="login">Already have an account? <a href="login.html"> login Now </a></div>
+      </form>
+    </div>
+    </div>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>

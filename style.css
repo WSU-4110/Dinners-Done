@@ -1,0 +1,258 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif
+    
+}
+
+body{
+ 
+  height: 100vh;
+  background-image: linear-gradient(rgba(4,9,30,0.6), rgba(4, 9, 30, 0.6)), url(images/bg.jpg);
+  background-size: cover;
+}
+
+.menu{
+  height: 80px;
+  width: 100%;
+  background:  rgba(0, 0, 0, 0.3);
+  }
+  .menu ul{
+  float:  right;
+  margin-right: 20px;
+  list-style-type: none;
+}
+.menu ul li{
+  display: inline-block;
+  margin:  0 8px;
+  line-height: 80px;
+}
+.menu ul li a{
+  text-decoration: none;
+  color: white;
+  text-transform: uppercase;
+  padding:  5px 20px;
+}
+
+.menu ul li a.active,
+.menu ul li a:hover{
+  background:  #ff8080;
+  transition: 0.5s;
+  border-radius:  2px;
+}
+.btn{
+  font-size: 30px;
+  color: white;
+  float:  right;
+  margin-right: 50px;
+  line-height: 80px;
+  cursor: pointer;
+  display: none;
+}
+#toggle-bar{
+  display: none;
+}
+@media screen and (max-width: 700px) {
+  
+  .btn{
+    display: block;
+  }
+
+  
+  .menu ul{
+    position: fixed;
+    width: 100%;
+    height: 40vh;
+    background: rgba(0, 0, 0, .6);
+    top:  80px;
+    left: -100%;
+    text-align: center;
+    transition: all .5s;
+    z-index: 2;
+  }
+  .menu ul li{
+    display: block;
+  }
+  
+  .menu ul li a.active,
+  .menu ul li a:hover{
+  background: none;
+  transition: 0.5s;
+  border-radius:  2px;
+  color: orange;
+  }
+  #toggle-bar:checked ~ul{
+    left: 0%;
+  }
+}
+
+  /* Home Page */
+.content{
+
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  
+}
+.content h1{
+  font-size: 40px ;
+}
+.content p{
+  margin: 10px 0 40px;
+  font-size: 15px;
+  color: white;
+}
+.button{
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  font-size: 15px;
+  border:  2px solid  #ff8080;
+  padding:  12px 34px;
+  outline:  none;
+  background: transparent;
+  cursor: pointer;
+  }
+
+/*Recipes Page*/
+.box{
+  /*display: grid;
+  grid-template-columns: 450px 450px 450px 450px;*/
+   padding: 4rem 2rem;
+  /* Grid styles */
+  display: grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-gap: 1rem;
+  position: relative;
+  
+}
+.rbox {
+ 
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  align-items: justif;
+  border: 1px solid rgb(0,0,0,.8);
+  width: 60%;
+  margin: 60px auto;
+  background-color: rgb(255,255,255,.7);
+  color: black;
+}
+
+.recipe-img {
+  height: 190px;
+  width: 190px;
+  border-radius: 20%;
+  margin-left: 5px;
+ }
+ 
+ .recipe-name {
+  color: #ff8080;
+  display: inline-block;
+  
+  font-size: 15px;
+  color: white;
+  
+}
+
+ .recipe-name a:hover{
+  text-decoration: underline;
+}
+ 
+
+/*Form Page*/
+
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  width: 400px;
+  text-align: center;
+  border-radius: 10px;
+}
+.container form{
+  padding: 20px 20px 20px 20px;
+}
+.container .title{
+  background: #ff8080;
+  color: white;
+  height: 60px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+form .text{
+
+  border-bottom: 1px solid #adadad;
+}
+.text input{
+  width: 80%;
+  padding:  0 5px;
+  height: 60px;
+  border: none;
+  outline: none;
+  padding-left: 60px;
+  border-radius: 5px;
+}
+.text placeholder{
+  color: #adadad;
+  font-size: 17px;
+}
+.container form .pass{
+  margin: 10px 100px 15px 0;
+}
+.container form .pass a{
+  color: #adadad;
+  font-size: 17px;
+  text-decoration: none;
+}
+.container form .pass a:hover{
+  text-decoration: underline;
+}
+button[type="submit"]{
+  margin: 30px 0px 15px 0;
+  width: 80%;
+  height: 35px;
+  border: .5px solid #ff8080;
+  border-radius: 10px;
+  background: #ff8080;
+  cursor: pointer;
+  font-size: 17px;
+  color:  white;
+}
+.signup{
+  margin: 10px 0;
+  font-size: 15px;
+}
+.signup a{
+  color: #ff8080;
+  text-decoration: none;
+}
+
+.signup a:hover{
+  text-decoration: underline;
+}
+
+.login{
+  margin: 20px 0;
+  font-size: 15px;
+}
+.login a{
+  color: #ff8080;
+  text-decoration: none;
+}
+
+.login a:hover{
+  text-decoration: underline;
+}
