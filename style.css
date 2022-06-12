@@ -156,12 +156,15 @@ body{
  .recipe-name {
   color: #ff8080;
   display: inline-block;
-  
   font-size: 15px;
   color: white;
   
 }
-
+.recipe-name a{
+  color: #ff4e4e;
+  font-weight: bold;
+  text-decoration: none;
+}
  .recipe-name a:hover{
   text-decoration: underline;
 }
