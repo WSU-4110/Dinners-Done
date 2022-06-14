@@ -73,8 +73,13 @@ As the project progresses, we can add functionality or detailing if possible, bu
 - Mohammed reviewed his code and did some editing
 - Kristina worked on the recipe list
 
-6/10 
+6/9
+- Group meeting
+- Finished UML diagram
+
+6/10
 - Mohammed finished creating signup functions
+- Kristina submitted UML diagram for the group
 - Bruno created interface for website
 - Omar created database
 - Kristina tested and put things together
