@@ -67,3 +67,9 @@ As the project progresses, we can add functionality or detailing if possible, bu
 - Kristina did final editing on SRS assignment
 - Submission of SRS assignment submitted by Kristina 
 - Mohammed added all Functional and Non-Functional requirements into issues on GitHub
+
+6/04 
+- Hilda did some editing on website
+- Mohammed reviewed his code and did some editing
+- Kristina worked on the recipe list
+
