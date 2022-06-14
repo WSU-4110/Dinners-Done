@@ -126,7 +126,7 @@ body{
   /* Grid styles */
   display: grid;
   align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   grid-gap: 1rem;
   position: relative;
   
@@ -159,7 +159,6 @@ body{
   font-size: 15px;
   color: #ff4e4e;
   font-weight: bold;
-  
 }
 
 

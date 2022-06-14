@@ -8,10 +8,10 @@
     <title>Dinners Done</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <script src="https://unpkg.com/vue@3"></script>
 </head>
 <body >
-    
+    <div id="app">
     <nav class="menu">
         <input type="checkbox" id="toggle-bar">
         <label for="toggle-bar" class='btn'>
@@ -26,70 +26,114 @@
         </ul>
     </nav>
     <section>
-        <div class="box"> 
-            <div  class="rbox">
-            <a href="singlerecipe.html">
-            <img class="recipe-img" src="images/bacon-mac.jpg" >
-            <div class="recipe-name">Bacon Mac & Cheese</div>
-            </a>
-            </div>
-            <div  class="rbox">
-             <a href="#">
-            <img class="recipe-img" src="images/oven-fried-parmesan-chicken.jpg" >
-            <div class="recipe-name">Oven Fried Parmesan Chicken</div>
-            </a>
-            </div>
-            <div  class="rbox">
-            <a href="#">
-            <img class="recipe-img" src="images/tuna-casserole.jpg" >
-            <div class="recipe-name"> Tuna Casserole</div>
-            </a>
-            </div>
-            <div class="rbox">
-                <a href="#">
-            <img class="recipe-img" src="images/shrimp.jpg" >
-            <div class="recipe-name">  Honey Garlic Shrimp</div>
-            </a>
-            </div>
-        
-            <div  class="rbox">
-                <a href="#">
-            <img class="recipe-img" src="images/salad.jpg" >
-             
-             <div class="recipe-name">Chickpea Salad</div>
-             </a>
-            </div>
-            <div class="rbox">
-                <a href="#">
-                <img class="recipe-img" src="images/chicken.jpg" >
-                <div class="recipe-name"> Chicken Stir-Fry</div>
-                </a> 
-            </div>
-            <div  class="rbox">
-                <a href="#">
-                <img class="recipe-img" src="images/vegetable-stir-fry-14.jpg" >
-                <div class="recipe-name"> Vegtable Stir-Fry</div>  
-                </a>
-            </div>
-            <div  class="rbox">
-                <a href="#">
-                <img class="recipe-img" src="images/grilled-salmon.jpg" >
-                <div class="recipe-name"> Grilled Salmon</div>  
-                </a>  
-            </div>
-             <div  class="rbox">
-                <a href="#">
-                <img class="recipe-img" src="images/classic-waffles.jpg" >
-                <div class="recipe-name">Classic Waffles</div>    
-                </a>
-            </div>
-             <div  class="rbox">
-                <a href="#">
-                <img class="recipe-img" src="images/ham-and-cheese-omelet.jpg" >
-                <div class="recipe-name"> Ham and Cheese Omelette</div>  
-                </a>  
-            </div>
-            
+            <div class="box"> 
+                <div  class="rbox" v-for="recipe in recipes">
+                    <a :href="recipe.url">
+                        <img class="recipe-img" :src="recipe.image" >
+                        <br>
+                        <div class="recipe-name">{{recipe.name}}</div>
+                        <br>
+                        <div class="recipe-name">{{recipe.author}}</div>
+                    </a>
+                </div>
         </div>
     </section>
+    </div>
 </body>
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        recipes: [
+
+         {
+
+            "image": "images/bacon-mac.jpg",
+            "name": "Bacon Mac & Cheese",
+            "author": " Author: https://opensourcecook.com",
+            "url" : "singlerecipe.html"
+
+        },
+
+        {
+
+            "image": "images/oven-fried-parmesan-chicken.jpg",
+            "name": "Oven Fried Parmesan Chicken",
+            "author": "Author: https://opensourcecook.com",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/tuna-casserole.jpg",
+            "name": "Tuna Casserole",
+            "author": "Author: https://opensourcecook.com",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/shrimp.jpg",
+            "name": "Honey Garlic Shrimp",
+            "author": "Author: Chef John",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+            "image": "images/salad.jpg",
+            "name": "Grilled Chicken Bacon Ranch Salad",
+            "author": "Author: thedailygourmet",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/chicken.jpg",
+            "name": "Chicken Stir-Fry",
+            "author": "Author: Katie Sechrist",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/vegetable-stir-fry-14.jpg",
+            "name": "Vegtable Stir-Fry",
+            "author": "Author: veggigoddess",
+            "url" : "singlerecipe.html"
+
+        },
+       
+        {
+
+            "image": "images/ham-and-cheese-omelet.jpg",
+            "name": "Ham and Cheese Omelette",
+            "author": "Author: Allrecipes Member",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/grilled-salmon.jpg",
+            "name": "Grilled Salamon",
+            "author": "Author: tinamenina",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/classic-waffles.jpg",
+            "name": "Classic Waffles",
+            "author": "Author: Allrecipes Member",
+            "url" : "singlerecipe.html"
+
+        }
+
+        ]
+      }
+    }
+  }).mount('#app')
+</script>
+
+</html>
