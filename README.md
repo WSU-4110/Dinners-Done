@@ -37,9 +37,6 @@ As the project progresses, we can add functionality or detailing if possible, bu
 -Backend (arrays, functions, classes, etc.) and main debugging - MOHAMMED CHOKR, KRISTINA KARNICK 
      **After-class discussions on basic structures and assignment of individual components that can be begun prior to completion of other parts of project
 
-*Because our work will be very tightly intertwined and also dependent upon the others' components, Mohammed and I will both be performing lead duties. 
-This will ensure that both of us can complete work at times convenient to us and not always synchronous.
-
 -Decided to have 1 PowerPoint begun and shared. Each member can add details to his/her own slide with details of duties and progress 
 -As sprints progress, components that require more time/work than others can be re-addressed and jobs shared 
 -Main functionality the primary goal of first sprint. Later sprints likely to be fine-tuning and perfecting; additional functionality or database entries if 
@@ -52,3 +49,38 @@ This will ensure that both of us can complete work at times convenient to us and
 
 5/19
 -Mohammed verified PowerPoint structure with instructor
+
+5/26
+- Kristina shared a document to complete the SRS assignment
+- Cody added Functional requirements about the recipe database
+
+5/28
+- Mohammed added functional requirements 
+- Kristina added functional and non functional requirements
+- Bruno added Functional Requirements 
+- Cody added Functional Requirements
+- Kristina revised and fixed SRS sheet in the correct order
+- Mohammed filled out Functional Requirement templates
+
+
+5/31 
+- Kristina did final editing on SRS assignment
+- Submission of SRS assignment submitted by Kristina 
+- Mohammed added all Functional and Non-Functional requirements into issues on GitHub
+
+6/04 
+- Hilda did some editing on website
+- Mohammed reviewed his code and did some editing
+- Kristina worked on the recipe list
+
+6/9
+- Group meeting
+- Finished UML diagram
+
+6/10
+- Mohammed finished creating signup functions
+- Kristina submitted UML diagram for the group
+- Bruno created interface for website
+- Omar created database
+- Kristina tested and put things together
+
