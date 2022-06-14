@@ -73,3 +73,10 @@ As the project progresses, we can add functionality or detailing if possible, bu
 - Mohammed reviewed his code and did some editing
 - Kristina worked on the recipe list
 
+6/10 
+- Mohammed finished creating signup functions
+- Bruno created interface for website
+- Omar created database
+- Kristina tested and put things together
+
+
