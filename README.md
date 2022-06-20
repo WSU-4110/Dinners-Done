@@ -84,4 +84,9 @@ As the project progresses, we can add functionality or detailing if possible, bu
 - Omar created database
 - Kristina tested and put things together
 
-
+6/18
+- Mohammed created add favorites button
+- Mohammed created add to shopping list button
+- Mohammed added option numbers to add to shopping list
+- 
+- 
