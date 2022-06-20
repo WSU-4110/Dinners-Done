@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dinners Done</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/vue@3"></script>
+</head>
+<body >
+    <div id="app">
+    <nav class="menu">
+        <input type="checkbox" id="toggle-bar">
+        <label for="toggle-bar" class='btn'>
+            <i class="fa fa-bars"></i>
+        </label>
+        
+        <ul>
+            <li class="nav"> <a href="index.html">Home</a></li>
+            <li class="nav"> <a class="active" href="recipes.html">Recipes</a></li>
+            <li class="nav"> <a href="login.html">Login</a></li>
+            <li class="nav"> <a href="signup.html">SignUp</a></li>
+            <li class="nav"> <a href="recipeEntryPage.html">Recipe Entry</a></li>
+        </ul>
+    </nav>
+    <section>
+            <div class="box"> 
+                <div  class="rbox" v-for="recipe in recipes">
+                    <a :href="recipe.url">
+                        <img class="recipe-img" :src="recipe.image" >
+                        <br>
+                        <div class="recipe-name">{{recipe.name}}</div>
+                        <br>
+                        <div class="recipe-name">{{recipe.author}}</div>
+                    </a>
+                    <div>
+                        <br><button type="button" class="favbtn">Add Favorite</button>
+                        <br><button type="button" class="favbtn">Add to Shopping List</button>
+                        <select name="Quantity" class="foodquantity">
+                            <option value="o1">1</option>
+                            <option value="o2">2</option>
+                            <option value="o3">3</option>
+                            <option value="o4">4</option>
+                            <option value="o5">5</option>
+                            <option value="o6">6</option>
+                            <option value="o7">7</option>
+                            <option value="o8">8</option>
+                            <option value="o9">9</option>
+                            <option value="o10">10</option>
+                          </select><br>
+                        </div>
+                    </div>
+                    
+                </div>
+        </div>
+    </section>
+    </div>
+</body>
+<script>
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        recipes: [
+
+         {
+
+            "image": "images/bacon-mac.jpg",
+            "name": "Bacon Mac & Cheese",
+            "author": " Author: https://opensourcecook.com",
+            "url" : "singlerecipe.html"
+
+
+        },
+
+        {
+
+            "image": "images/oven-fried-parmesan-chicken.jpg",
+            "name": "Oven Fried Parmesan Chicken",
+            "author": "Author: https://opensourcecook.com",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/tuna-casserole.jpg",
+            "name": "Tuna Casserole",
+            "author": "Author: https://opensourcecook.com",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/shrimp.jpg",
+            "name": "Honey Garlic Shrimp",
+            "author": "Author: Chef John",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+            "image": "images/salad.jpg",
+            "name": "Grilled Chicken Bacon Ranch Salad",
+            "author": "Author: thedailygourmet",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/chicken.jpg",
+            "name": "Chicken Stir-Fry",
+            "author": "Author: Katie Sechrist",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/vegetable-stir-fry-14.jpg",
+            "name": "Vegtable Stir-Fry",
+            "author": "Author: veggigoddess",
+            "url" : "singlerecipe.html"
+
+        },
+       
+        {
+
+            "image": "images/ham-and-cheese-omelet.jpg",
+            "name": "Ham and Cheese Omelette",
+            "author": "Author: Allrecipes Member",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/grilled-salmon.jpg",
+            "name": "Grilled Salamon",
+            "author": "Author: tinamenina",
+            "url" : "singlerecipe.html"
+
+        },
+        {
+
+            "image": "images/classic-waffles.jpg",
+            "name": "Classic Waffles",
+            "author": "Author: Allrecipes Member",
+            "url" : "singlerecipe.html"
+            
+        }
+
+        ]
+      }
+    }
+  }).mount('#app')
+</script>
+
+</html>
