@@ -1,8 +1,8 @@
-public class chicken implements FoodOption {
+public class pasta implements FoodOption {
 
     @Override
     public void food() {
-       System.out.println("Creamy Tuscan Chicken");
+       System.out.println("Pesto Penne Pasta");
     }
  }
 

@@ -1,6 +1,6 @@
 public class Food {
 	
-   public FoodOption getFood(String foodType){
+   public static FoodOption getFood(String foodType){
     if(foodType == null){
        return null;
     }		
