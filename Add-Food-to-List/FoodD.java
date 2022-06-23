@@ -1,17 +1,18 @@
 public class FoodD {
 
-    public static void main(String[] args) {
-       Food foodOptions = new Food();
- 
- 
-       Food food1 = foodOptions.getFood("Chicken");
- 
+   public static void main(String[] args) {
+      Food foodOptions = new Food();
 
-       Food food2 = foodOptions.getFood("Shrimp");
- 
+      FoodOption food1 = foodOptions.getFood("Chicken");
+      food1.food();
 
-       Food food3 = foodOptions.getFood("PorkChops");
+      FoodOption food2 = foodOptions.getFood("Shrimp");
+      food2.food();
 
-       Food food4 = foodOptions.getFood("Pasta");
-    }
- }
+      FoodOption food3 = foodOptions.getFood("PorkChops");
+      food3.food();
+
+      FoodOption food4 = foodOptions.getFood("Pasta");
+      food4.food();
+   }
+}

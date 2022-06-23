@@ -1,14 +1,15 @@
-public class chioken implements FoodOPtion {
+public class chicken implements FoodOption {
 
-    @Override
-    public void food() {
-       System.out.println("Creamy Tuscan Chicken");
-    }
- }
+   @Override
+   public void food() {
+      System.out.println("Creamy Tuscan Chicken");
+   }
+}
 
-  /*Creamy Garlic Shrimp
-    Pesto Penne Pasta
-    Glazed Honey Balsamic Pork Chops
-    Creamy Tuscan Chicken
-
+/*
+ * Creamy Garlic Shrimp
+ * Pesto Penne Pasta
+ * Glazed Honey Balsamic Pork Chops
+ * Creamy Tuscan Chicken
+ * 
  */
