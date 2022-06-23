@@ -1,4 +1,4 @@
-public class porkchops implements FoodOption {
+public class porkchops implements FoodOPtion {
 
     @Override
     public void food() {

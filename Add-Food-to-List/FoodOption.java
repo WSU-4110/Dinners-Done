@@ -1,6 +1,5 @@
 public interface FoodOption{
     void food();
-
  }
  
  /*Creamy Garlic Shrimp

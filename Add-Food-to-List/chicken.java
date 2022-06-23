@@ -1,4 +1,4 @@
-public class chicken implements FoodOption {
+public class chioken implements FoodOPtion {
 
     @Override
     public void food() {
