@@ -1,7 +1,7 @@
 public class FoodD {
 
     public static void main(String[] args) {
-       Food foodOptions = new ShapeFactory();
+       Food foodOptions = new Food();
  
  
        Food food1 = foodOptions.getFood("Chicken");
