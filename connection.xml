@@ -1,0 +1,92 @@
+
+<?xml version = "1.0" encoding = "UTF-8"?>
+
+
+  <Context ....>
+
+  ...
+
+//  The following commands Tomcat server to create a data source with the JDNI name jdbc/DinnersDone
+// the max connections are currently set at 100
+// the max idle connections are currently set at 20
+// the max time a connection is allowed to remain idle is currently set at 10K ms
+//http://central.maven.org/maven2/jboss/jboss-common-jdbc-wrapper/) JAR file needs to be downloaded
+//and added to the "default" library directory for the tomcat server config.
+
+//  NOTE:  NEED TO ADD TO /WEB-INF/web.xml file to add the following:
+//         (should be removed from here)
+//         this will force the web app to use this data source (our db)
+//    <resource-env-ref>
+//        <resource-env-ref-name>jdbc/DinnersDone<<resource-env-ref-name>
+//        <resource-env-ref-type>javax.sql.DataSource</resource-env-ref-type>
+//    </resource-env-ref>
+
+  <Resource name="jdbc/DinnersDone"        //rename db to whatever we enter for site
+               auth="Container"
+               type="javax.sql.DataSource"/>
+
+                      //TODO:  verify below name parameter is correct (/db)
+  <ResourceParams name="jdbc/DinnersDone">
+    <parameter>
+      <name>factory</name>
+      <value>org.apache.commons.dbcp.BasicDataSourceFactory</value>
+    </parameter>
+
+    <parameter>
+      <name>maxActive</name>
+      <value>100</value>
+    </parameter>
+
+    <parameter>
+      <name>maxIdle</name>
+      <value>20</value>
+    </parameter>
+
+    <parameter>
+      <name>validationQuery</name>
+      <value>SELECT 1</value>
+    </parameter>
+
+    <parameter>
+      <name>testOnBorrow</name>
+      <value>true</value>
+    </parameter>
+
+    <parameter>
+      <name>testWhileIdle</name>
+      <value>true</value>
+    </parameter>
+
+                         //below sets time for waiting and checking for idle connections
+    <parameter>
+      <name>timeBetweenEvictionRunsMillis</name>
+      <value>10000</value>
+    </parameter>
+
+    <parameter>
+      <name>minEvictableIdleTimeMillis</name>
+      <value>60000</value>
+    </parameter>
+                          //userName is parameter used here
+    <parameter>
+     <name>username</name>
+     <value>userName</value>
+    </parameter>
+                           //userPass is parameter used here
+    <parameter>
+     <name>password</name>
+     <value>userPass</value>
+    </parameter>
+
+    <parameter>
+       <name>driverClassName</name>
+       <value>com.mysql.jdbc.Driver</value>
+    </parameter>
+                  //assumes DinnersDone name for db, localhost is the server conn.
+    <parameter>
+      <name>url</name>
+      <value>jdbc:mysql://localhost:3306/DinnersDone</value>  
+    </parameter>
+
+  </ResourceParams>
+</Context>
