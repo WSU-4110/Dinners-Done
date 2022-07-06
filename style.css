@@ -159,6 +159,31 @@ body{
   color:  #E37383;
   font-weight: bold;
 }
+.favbtn{
+  border-radius: 20px;
+  border-color:#E37383;
+  color:#E37383;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.foodquantity{
+  display: inline-block;
+  width: 20%;
+  padding: 10px 20px;
+  margin: 10px 0;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  font-size: 15px;
+  height: 40px;
+}
+
 
 
 /*Form Page*/
@@ -170,7 +195,7 @@ body{
   transform: translate(-50%, -50%);
   background: white;
   width: 400px;
-  height: 55%;
+  height: auto;
   text-align: center;
   border-radius: 10px;
 }
@@ -185,7 +210,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 form .text{
 
@@ -198,7 +223,7 @@ form .text{
   border: none;
   outline: none;
   padding-left: 60px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
 .text placeholder{
   color: #adadad;
@@ -252,6 +277,7 @@ input[type="submit"]{
   text-decoration: underline;
 }
 
+
 /*Recipe Form*/
 .content1{
   position: absolute;
@@ -295,7 +321,6 @@ textarea {
 
   
 }
-
 
 label {
   font-size: 20px;

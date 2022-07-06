@@ -11,9 +11,13 @@
     <title>Dinners Done</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/vue@3"></script>
+
+
 </head>
 <body >
-    
+        <div id="app">
+
     <nav class="menu">
         <input type="checkbox" id="toggle-bar">
         <label for="toggle-bar" class='btn'>
@@ -32,32 +36,98 @@
     	<div class="container">
         <div class="title"><span>Register</span></div>
         <form method="post">
+
             <div class="text">
             
-                <input type="text" placeholder="Enter Username" required>
+                <input type="text" placeholder="Enter Username" v-model="username" required>
             </div>
             <div class="text">
             
-                <input type="text" placeholder="Enter Email" required>
-            </div>
-            <div class="text">
-                <input type="password" placeholder="Enter Password" required>
-            </div>
-            <div class="text">
-                <input type="password" autofocus placeholder="Confirm password" id="password2">
+                <input type="text" placeholder="Enter Email" v-model="email" required>
             </div>
 
-
+            <div class="text">
+                <input type="password" v-model="password" placeholder="Enter Password" id="password" required>
+            </div>
+            <div class="text">
+                <input type="password" v-model="password_confirmation"  placeholder="Confirm password" id="password2" required >
+            </div>
             <div class="buttn">
-                <input type="submit" value="login">
+                <input type="submit" value="Signup" @click="register">
+                 <li v-for="error in formError" style="color:gray; text-align: left;  padding-left: 40px;">{{error}}</li>
+
             </div>
             <div class="login">Already have an account? <a href="login.html"> login Now </a></div>
             
         </form>
       
     </div>
-
-
+     
+    
     	
     </section>
+</div>
 </body>
+
+<script type="text/javascript">
+    
+  const { createApp } = Vue
+
+  createApp({
+    data() {
+      return {
+        username:'',
+        email: '',
+        password:'',
+        password_confirmation:'',
+        formError: [],
+      }
+    },
+methods: {
+
+validateForm(){
+        var valid = true;
+        this.formError =[];
+
+        if(this.username.length == 0 ){
+                        this.formError.push("The username field is required") ;
+
+            valid = false;
+        
+        }
+        if(this.email.length == 0 ){
+                        this.formError.push("The email field is required") ;
+
+            valid = false;
+        
+        }
+
+        if(this.password !== this.password_confirmation){
+            this.formError.push("The passwords do not match") ;
+            valid = false;
+        
+        }
+        if(this.password.length < 6 || this.password.length > 14 ){
+                        this.formError.push("The password length should be between 6 and 14") ;
+
+            valid = false;
+        
+        }
+        return valid
+
+},
+
+register(event) {
+    event.preventDefault();
+    if (this.validateForm()) {
+      event.target.submit() 
+    }
+}
+
+},
+
+  }).mount('#app')
+</script>
+
+    
+</html>
