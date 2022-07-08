@@ -4,61 +4,145 @@
 
 <head>
 
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dinners Done</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dinners Done</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/vue@3"></script>
+
+
 </head>
 
 <body>
+    <div id="app">
 
-  <nav class="menu">
-    <input type="checkbox" id="toggle-bar">
-    <label for="toggle-bar" class='btn'>
-      <i class="fa fa-bars"></i>
-    </label>
+        <nav class="menu">
+            <input type="checkbox" id="toggle-bar">
+            <label for="toggle-bar" class='btn'>
+                <i class="fa fa-bars"></i>
+            </label>
 
-    <ul>
-      <li class="nav"> <a href="index.html">Home</a></li>
-      <li class="nav"> <a href="recipes.html">Recipes</a></li>
-      <li class="nav"> <a href="login.html">Login</a></li>
-      <li class="nav"> <a class="active" href="signup.html">Signup</a></li>
-    </ul>
-  </nav>
-  <section>
-    <div class="container">
-      <div class="title"><span>Register</span></div>
+            <ul>
+                <li class="nav"> <a href="index.html">Home</a></li>
+                <li class="nav"> <a href="recipes.html">Recipes</a></li>
+                <li class="nav"> <a href="login.html">Login</a></li>
+                <li class="nav"> <a class="active" href="signup.html">Signup</a></li>
+                <li class="nav"> <a href="recipeEntryPage.html">Recipe Entry</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div class="container">
+                <div class="title"><span>Register</span></div>
+                <form method="post">
 
-      <div id="error"></div>
-      <form id="form" action="" method="GET">
+                    <div class="text">
 
-        <div class="text">
+                        <input type="text" placeholder="Enter Username" v-model="username" required>
+                    </div>
+                    <div class="text">
 
-          <input type="text" placeholder="Enter Username" required>
-        </div>
+                        <input type="text" placeholder="Enter Email" v-model="email" required>
+                    </div>
 
-        <div class="text">
-          <input type="text" id="email" placeholder="Enter Email" required>
-        </div>
+                    <div class="text">
+                        <input type="password" v-model="password" placeholder="Enter Password" id="password" required>
+                    </div>
+                    <div class="text">
+                        <input type="password" v-model="password_confirmation" placeholder="Confirm password"
+                            id="password2" required>
+                    </div>
+                    <div class="buttn">
+                        <input type="submit" value="Signup" @click="register">
+                        <li v-for="error in formError" style="color:gray; text-align: left;  padding-left: 40px;">
+                            {{error}}</li>
 
-        <div class="text">
-          <input type="password" placeholder="Enter Password" id="password">
-        </div>
-        <div class="text">
-          <input type="password" autofocus placeholder="Confirm password" id="password2">
-        </div>
+                    </div>
+                    <div class="login">Already have an account? <a href="login.html"> login Now </a></div>
 
-        <div class="buttn">
-          <button type="submit">Create Account</button>
-        </div>
-        <div class="login">Already have an account? <a href="login.html"> login Now </a></div>
-      </form>
+                </form>
+
+            </div>
+
+
+
+        </section>
     </div>
-    </div>
-  </section>
-  <script src="script.js"></script>
 </body>
+
+<script type="text/javascript">
+
+    const { createApp } = Vue
+
+    createApp({
+        data() {
+            return {
+                username: '',
+                email: '',
+                password: '',
+                password_confirmation: '',
+                formError: [],
+            }
+        },
+        methods: {
+
+            validateForm() {
+                var valid = true;
+                this.formError = [];
+
+                if (this.username.length == 0) {
+                    this.formError.push("The username field is required");
+
+                    valid = false;
+
+                }
+                if (this.email.length == 0) {
+                    this.formError.push("The email field is required");
+
+                    valid = false;
+
+                }
+
+                if (this.password !== this.password_confirmation) {
+                    this.formError.push("The passwords do not match");
+                    valid = false;
+
+                }
+                if (this.password.length < 6 || this.password.length > 14) {
+                    this.formError.push("The password length should be between 6 and 14");
+
+                    valid = false;
+
+                }
+                if (this.password === "password" || this.password === "PASSWORD") {
+                    this.formError.push("The password cannot be password!");
+
+                    valid = false;
+
+                }
+                if (this.password === this.username) {
+                    this.formError.push("Your password includes your username in it!");
+
+                    valid = false;
+
+                }  
+
+                return valid
+
+            },
+
+            register(event) {
+                event.preventDefault();
+                if (this.validateForm()) {
+                    event.target.submit()
+                }
+            }
+
+        },
+
+    }).mount('#app')
+</script>
+
 
 </html>

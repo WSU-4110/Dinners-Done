@@ -1,93 +1,100 @@
-*{
-    margin: 0;
-    padding: 0;
-    font-family: "Arial", sans-serif
-    
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Arial", sans-serif
 }
 
-body{
- 
+body {
+
   height: 100vh;
-  background-image: linear-gradient(rgba(4,9,30,0.6), rgba(4, 9, 30, 0.6)), url(images/bg.jpg);
+  background-image: linear-gradient(rgba(4, 9, 30, 0.6), rgba(4, 9, 30, 0.6)), url(images/bg.jpg);
   background-size: cover;
 }
 
-.menu{
+.menu {
   height: 80px;
   width: 100%;
-  background:  rgba(0, 0, 0, 0.3);
-  }
-  .menu ul{
-  float:  right;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.menu ul {
+  float: right;
   margin-right: 20px;
   list-style-type: none;
 }
-.menu ul li{
+
+.menu ul li {
   display: inline-block;
-  margin:  0 8px;
+  margin: 0 8px;
   line-height: 80px;
 }
-.menu ul li a{
+
+.menu ul li a {
   text-decoration: none;
   color: white;
   text-transform: uppercase;
-  padding:  5px 20px;
+  padding: 5px 20px;
 }
 
 .menu ul li a.active,
-.menu ul li a:hover{
-  background:  #ff8080;
+.menu ul li a:hover {
+  background: #ff8080;
   transition: 0.5s;
-  border-radius:  2px;
+  border-radius: 2px;
 }
-.btn{
+
+.btn {
   font-size: 30px;
   color: white;
-  float:  right;
+  float: right;
   margin-right: 50px;
   line-height: 80px;
   cursor: pointer;
   display: none;
 }
-#toggle-bar{
+
+#toggle-bar {
   display: none;
 }
+
 @media screen and (max-width: 700px) {
-  
-  .btn{
+
+  .btn {
     display: block;
   }
 
-  
-  .menu ul{
+
+  .menu ul {
     position: fixed;
     width: 100%;
     height: 50vh;
     background: rgba(0, 0, 0, .6);
-    top:  80px;
+    top: 80px;
     left: -100%;
     text-align: center;
     transition: all .5s;
     z-index: 2;
   }
-  .menu ul li{
+
+  .menu ul li {
     display: block;
   }
-  
+
   .menu ul li a.active,
-  .menu ul li a:hover{
-  background: none;
-  transition: 0.5s;
-  border-radius:  2px;
-  color: orange;
+  .menu ul li a:hover {
+    background: none;
+    transition: 0.5s;
+    border-radius: 2px;
+    color: orange;
   }
-  #toggle-bar:checked ~ul{
+
+  #toggle-bar:checked~ul {
     left: 0%;
   }
 }
 
-  /* Home Page */
-.content{
+/* Home Page */
+.content {
 
   position: absolute;
   width: 90%;
@@ -96,53 +103,57 @@ body{
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  
+
 }
-.content h1{
-  font-size: 40px ;
+
+.content h1 {
+  font-size: 40px;
 }
-.content p{
+
+.content p {
   margin: 10px 0 40px;
   font-size: 15px;
   color: white;
 }
-.button{
+
+.button {
   display: inline-block;
   color: white;
   text-decoration: none;
   font-size: 15px;
-  border:  2px solid  #ff8080;
-  padding:  12px 34px;
-  outline:  none;
+  border: 2px solid #ff8080;
+  padding: 12px 34px;
+  outline: none;
   background: transparent;
   cursor: pointer;
-  }
+}
 
 /*Recipes Page*/
-.box{
+.box {
   /*display: grid;
   grid-template-columns: 450px 450px 450px 450px;*/
-   padding: 4rem 2rem;
+  padding: 4rem 2rem;
   /* Grid styles */
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
   grid-gap: 1rem;
   position: relative;
-  
+
 }
+
 .rbox {
- 
+
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
   padding: 20px;
   font-size: 30px;
   text-align: center;
   align-items: justif;
-  border: 1px solid rgb(0,0,0,.8);
+  border: 1px solid rgb(0, 0, 0, .8);
   width: 60%;
   margin: 60px auto;
-/*  background-color: rgb(255,255,255,.7);*/
+  /*  background-color: rgb(255,255,255,.7);*/
   color: black;
 }
 
@@ -151,18 +162,19 @@ body{
   width: 220px;
   border-radius: 20%;
   margin-left: 5px;
- }
- 
- .recipe-name {
+}
+
+.recipe-name {
   display: inline-block;
   font-size: 15px;
-  color:  #E37383;
+  color: #E37383;
   font-weight: bold;
 }
-.favbtn{
+
+.ashoppingbtn {
   border-radius: 20px;
-  border-color:#E37383;
-  color:#E37383;
+  border-color: #E37383;
+  color: #E37383;
   padding: 10px 14px;
   text-align: center;
   text-decoration: none;
@@ -173,11 +185,25 @@ body{
   cursor: pointer;
 }
 
-.foodquantity{
+.favbtn {
+  border-radius: 20px;
+  border-color: #E37383;
+  color: #E37383;
+  padding: 10px 14px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+
+.foodquantity {
   display: inline-block;
   width: 20%;
-  padding: 10px 20px;
-  margin: 10px 0;
+  padding: 10px 10px;
   border: 1px solid rgb(0, 0, 0);
   border-radius: 4px;
   font-size: 15px;
@@ -185,23 +211,26 @@ body{
 }
 
 
+
 /*Form Page*/
 
-.container{
+.container {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
   width: 400px;
-  height: 55%;
+  height: auto;
   text-align: center;
   border-radius: 10px;
 }
-.container form{
+
+.container form {
   padding: 20px 20px 20px 20px;
 }
-.container .title{
+
+.container .title {
   background: #ff8080;
   color: white;
   height: 60px;
@@ -209,37 +238,44 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 5px;
 }
-form .text{
+
+form .text {
 
   border-bottom: 1px solid #adadad;
 }
-.text input{
+
+.text input {
   width: 80%;
-  padding:   5px;
+  padding: 5px;
   height: 60px;
   border: none;
   outline: none;
   padding-left: 60px;
-  border-radius: 5px;
+  border-radius: 8px;
 }
-.text placeholder{
+
+.text placeholder {
   color: #adadad;
   font-size: 17px;
 }
-.container form .pass{
+
+.container form .pass {
   margin: 40px 100px 15px 0;
 }
-.container form .pass a{
+
+.container form .pass a {
   color: #adadad;
   font-size: 17px;
   text-decoration: none;
 }
-.container form .pass a:hover{
+
+.container form .pass a:hover {
   text-decoration: underline;
 }
-input[type="submit"]{
+
+input[type="submit"] {
   margin: 30px 0px 15px 0;
   width: 80%;
   height: 35px;
@@ -248,36 +284,40 @@ input[type="submit"]{
   background: #ff8080;
   cursor: pointer;
   font-size: 17px;
-  color:  white;
+  color: white;
 }
-.signup{
+
+.signup {
   margin: 10px 0;
   font-size: 15px;
 }
-.signup a{
+
+.signup a {
   color: #ff8080;
   text-decoration: none;
 }
 
-.signup a:hover{
+.signup a:hover {
   text-decoration: underline;
 }
 
-.login{
+.login {
   margin: 20px 0;
   font-size: 15px;
 }
-.login a{
+
+.login a {
   color: #ff8080;
   text-decoration: none;
 }
 
-.login a:hover{
+.login a:hover {
   text-decoration: underline;
 }
 
+
 /*Recipe Form*/
-.content1{
+.content1 {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -291,7 +331,8 @@ input[type="submit"]{
   color: #ff8080;
 }
 
-input[type=text1], select {
+input[type=text1],
+select {
   display: inline-block;
   width: 80%;
   padding: 12px 20px;
@@ -314,16 +355,15 @@ textarea {
   border-radius: 4px;
   box-sizing: border-box;
   font-size: 15px;
- /* text-align: left;*/
+  /* text-align: left;*/
   height: 120px;
 
-  
-}
 
+}
 
 label {
   font-size: 20px;
-  padding-left:0;
-  padding-top:0;
-  
+  padding-left: 0;
+  padding-top: 0;
+
 }

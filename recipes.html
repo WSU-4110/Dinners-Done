@@ -28,7 +28,7 @@
     </nav>
     <section>
             <div class="box"> 
-                <div  class="rbox" v-for="recipe in recipes">
+                <div  class="rbox" :name="recipe.name" v-for="recipe in recipes">
                     <a :href="recipe.url">
                         <img class="recipe-img" :src="recipe.image" >
                         <br>
@@ -38,8 +38,8 @@
                     </a>
                     <div>
                         <br><button type="button" class="favbtn">Add Favorite</button>
-                        <br><button type="button" class="favbtn">Add to Shopping List</button>
-                        <select name="Quantity" class="foodquantity">
+                        <br><button type="button" class="ashoppingbtn">Add to Shopping List</button>
+                        <select id="Quantity" class="foodquantity">
                             <option value="o1">1</option>
                             <option value="o2">2</option>
                             <option value="o3">3</option>
@@ -50,10 +50,8 @@
                             <option value="o8">8</option>
                             <option value="o9">9</option>
                             <option value="o10">10</option>
-                          </select><br>
-                        </div>
+                        </select><br>
                     </div>
-                    
                 </div>
         </div>
     </section>
@@ -73,7 +71,6 @@
             "name": "Bacon Mac & Cheese",
             "author": " Author: https://opensourcecook.com",
             "url" : "singlerecipe.html"
-
 
         },
 
@@ -155,5 +152,22 @@
     }
   }).mount('#app')
 </script>
+
+<script>
+
+const fav_list = [];
+const favorites = document.querySelectorAll(".favbtn");
+for(let i=0;i<favorites.length;i++){
+favorites[i].addEventListener("click",(e)=>{
+console.log(e.target.parentNode.parentNode.getAttribute("name"));
+if(favorites){
+    fav_list.push(e.target.parentNode.parentNode.getAttribute("name"));
+    console.log(fav_list);
+    }
+}); 
+}
+
+</script>
+
 
 </html>
