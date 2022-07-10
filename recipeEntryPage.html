@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +37,7 @@ function SaveRecipe() {
     </nav>
     <section>
         <div class="content">
-            <form id="form" onsubmit="return false">
+            <form id="form" >//onsubmit="return false"
                 <div class="form-group">
                     <label for="RecipeName">Recipe Name</label>
                     <input type="text" class="form-control" id="RecipeName" placeholder="Enter name">
@@ -55,7 +54,12 @@ function SaveRecipe() {
                 </div>
                 
                 <div class="form-group">
-                    <label for="Recipe">Recipe</label>
+                    <label for="ServingSize">Serving Size</label>
+                    <input type="text" class="form-control" id="ServingSize" placeholder="Enter Recipe Author">
+                </div>
+                
+                <div class="form-group">
+                    <label for="RecipeDescription">Recipe</label>
                     <textarea name="textarea" id="Recipe" rows="10" cols="40"></textarea>
                 </div>
                 

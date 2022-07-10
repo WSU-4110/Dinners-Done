@@ -1,4 +1,3 @@
-package DD;
 
 import java.io.*;
 import java.util.*;
@@ -8,6 +7,9 @@ import jakarta.servlet.http.*;
            //this is the basic Servlet that opens the website
 public class SiteLink extends HttpServlet{
 	
+
+	private static final long serialVersionUID = 1L;
+
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		resp.setContentType("index/html");
 		PrintWriter out = resp.getWriter();

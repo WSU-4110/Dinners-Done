@@ -1,6 +1,6 @@
-package DD;
 
-import java.io.IOException;  
+
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,9 +16,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
   @WebServlet(urlPatterns = "/login")
 public class LoginServlet extends HttpServlet {  
 	
+private static final long serialVersionUID = 1L;
+
 public void doPost(HttpServletRequest request, HttpServletResponse response)  
         throws ServletException, IOException {  
   
@@ -37,7 +40,7 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
              //verify that the entries are not null
     if(n.length() > 0 && p.length() > 0) {
     	if(validate(n, p)){  
-    		RequestDispatcher rd=request.getRequestDispatcher("servlet2");  
+    		RequestDispatcher rd=request.getRequestDispatcher("/recipes");  
     		rd.forward(request,response);  
         }  
              //right now the reset is to the index page
@@ -56,21 +59,14 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
 
 public static boolean validate(String name,String pass){  
 	boolean status=false;  
+	
 	try{  
-		         //temp data until user database is added
-	Class.forName("oracle.jdbc.driver.OracleDriver");  
-	Connection con = DriverManager.getConnection(  
-	"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+		         
+		Connection con = ConnToDb.getCon();
 	
-	//assume "USERDB" is descriptor of user database information tables
-	//assume "name" is descriptor for username
-	//assume "pass" is descriptor for password column in db
-	
-	     //this will access any user account with matching parameters
-	     //as long as userName is set as key value, this is sufficient to 
-	     //verify and validate
-	PreparedStatement stmnt1 = con.prepareStatement
-			("select * from USERDB where name=? and pass=?");  
+	//this will access any user account with matching parameters
+
+	PreparedStatement stmnt1 = con.prepareStatement("select * from USERDB where name=? and pass=?");  
 	stmnt1.setString(1,name);  
 	stmnt1.setString(2,pass);  
 	               
