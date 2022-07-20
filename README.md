@@ -1,20 +1,28 @@
-# Dinners-Done
-CSC4110 Semester project (S/S 2022)
+# dd
 
-Welcome to the Dinners-Done wiki!
+## Project setup
+```
+npm install
+```
 
-The overall concept for this project is utility. A website is created on which recipes are stored in a database. Users can sign into accounts and choose any number of recipes to add to a shopping list. Once finished with selection, the user can then hit "Print" and a list with the total ingredients necessary for purchase will be supplied. This enables the user to make a quick trip to a supermarket to attain all goods necessary for producing all meals chosen.
+Create a .env file  in the root directory. 
+Copy the .env.example to the .env file.
+Replace key-here with the firebase api key.
 
-Main functional components:
+### Compiles and hot-reloads for development
+```
+npm run serve
+```
 
-Working website with internal links to other pages and external links to any recipes that are owned by another site (copyright therefore protected)
-User sign-up and sign-in process that saves selected recipes
-Database of users
-Database of recipes that can be added to by user entries
-Coding components:
+### Compiles and minifies for production
+```
+npm run build
+```
 
-Arrays required to hold ingredient list and main array to hold totals of all items from those selected
-Printing function that will output the "final" array of totals
-Recipe class structures for recipes to easily implement additions
-Function for adding Recipe class objects *decided on one set structural array that contains every possible item...this will make combining arrays into one "final" easiest to implement within the course timeline
-The development of this project will be a combination of integrated and iterative, with an Agile approach. Basic functionality is the goal of Sprint 1. As the concurrent sprints are begun, we will address which functional requirements that have not been implemented are of the most important and assign those first. Each sprint should produce a working implementation that builds upon the last.
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
