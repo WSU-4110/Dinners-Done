@@ -13,9 +13,11 @@ import 'firebase/compat/firestore';
 // import { getDatabase } from "firebase/database";
 
 // import { initializeApp } from "firebase/app";
-//
+
+
+
 const firebaseConfig = {
-    apiKey: "",
+    apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
     authDomain: "recipe-dd.firebaseapp.com",
     projectId: "recipe-dd",
     storageBucket: "recipe-dd.appspot.com",

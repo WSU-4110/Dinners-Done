@@ -5,6 +5,14 @@
 npm install
 ```
 
+
+Create a .env file  in the root directory. 
+
+Copy the .env.example to the .env file.
+
+Replace key-here with the firebase api key.
+
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve
