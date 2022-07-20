@@ -12,7 +12,7 @@ import 'firebase/compat/firestore';
 // import { getDatabase } from "firebase/database";
 
 // import { initializeApp } from "firebase/app";
-//
+
 
 
 const firebaseConfig = {
