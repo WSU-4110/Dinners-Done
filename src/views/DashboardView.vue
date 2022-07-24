@@ -25,7 +25,8 @@
             </div>
           <div>
             <br><button type="button" class="favbtn" v-if="user.loggedIn">Add Favorite</button>
-            <br><button type="button" class="favbtn">Add to Shopping List</button>
+            <br><button type="button" class="shopbtn" @click="shopBtnFunction()">Add to Shopping List</button>
+                <span class="popuptext" id="myPopup">Added to Shopping List</span>
             <select name="Quantity" class="foodquantity">
               <option value="o1">1</option>
               <option value="o2">2</option>
@@ -48,7 +49,9 @@
 
 <script>
 
+
 import {db} from "@/main";
+//import { browserPopupRedirectResolver } from "@firebase/auth";
 import {mapGetters} from "vuex";
 // import {collection } from "firebase/firestore"
 
@@ -73,6 +76,11 @@ export default {
   },
   methods: {
     submit() {
+    },
+    shopBtnFunction()  {
+    var shopbtn = document.getElementById("myPopup");
+    //console.log("Something");
+    shopbtn.classList.toggle("show");
     }
   },
   computed: {
@@ -84,6 +92,7 @@ export default {
 
 
 };
+
 </script>
 
 <style>
