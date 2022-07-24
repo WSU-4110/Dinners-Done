@@ -31,6 +31,8 @@ firebase.auth().onAuthStateChanged(user => {
     store.dispatch("fetchUser", user);
 });
 
+
+
 //
 // export const db = getDatabase(firebaseApp);
 // export const auth = getAuth(firebaseApp);

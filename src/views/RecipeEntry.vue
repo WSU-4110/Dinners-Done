@@ -1,17 +1,4 @@
 <template>
-  <div class="">
-    <section>
-      <div class="box">
-        <div class="rbox" v-for="recipe in recipes" v-bind:key="recipe.id">
-          <a :href="recipe.link">
-            <img class="recipe-img" :src="recipe.image" >
-            <br>
-            <div class="recipe-name">{{recipe.name}}</div>
-            <br>
-          </a>
-        </div>
-      </div>
-
         <div class="content1">
             <form id="form" onsubmit="return false">
                 <div class="form-group">
@@ -37,6 +24,48 @@
 
             </form>
         </div>
-    </section>
-</div>
-</template> 
+</template>
+
+<script>
+
+import {db} from "@/main";
+
+export default {
+  name: 'RecipeEntryForm',
+  firebase: {
+    recipeentry: db.ref('recipeentry')
+  },
+  data() {
+    return {
+      newRecipe: {
+        RecipeName: '',
+        RecipeAuthor: '',
+        RecipeUrl: '',
+        RecipeNotes: ''
+      }
+    }
+  },
+  methods: {
+    addRecipe() {
+      this.$firebaseRefs.recipeentry.push({
+        RecipeName: this.newRecipe.RecipeName,
+        RecipeAuthor: this.newRecipe.RecipeAuthor,
+        RecipeUrl: this.newRecipe.RecipeUrl,
+        RecipeNotes: this.newRecipe.RecipeNotes
+      })
+      this.newRecipe.RecipeName = '';
+      this.newRecipe.RecipeAuthor = '';
+      this.newRecipe.RecipeUrl = '';
+      this.newRecipe.RecipeNotes = '';
+      alert("Successfully added")
+      this.$router.push('/ListRecipe')
+      
+    }
+  }
+
+}
+
+</script>
+
+
+
