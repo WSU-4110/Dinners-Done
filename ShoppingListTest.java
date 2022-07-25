@@ -47,7 +47,7 @@ public class ShoppingListTest {
     public  void setUnit()
     {
         ShoppingListIngredient a = new ShoppingListIngredient("a", 1, "a");
-        a.setUnit("b");
-        assertEquals("b", a.getUnit());
+        a.setUnit("c");
+        assertEquals("c", a.getUnit());
     }
 }
