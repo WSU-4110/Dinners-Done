@@ -4,16 +4,10 @@
       <div class="box">
         <div class="rbox" v-for="recipe in ShoppingList" v-bind:key="recipe.id">
           <a :href="recipe.data().link">
-            <img class="recipe-img" :src="recipe.data().image" >
-            <br>
             <div class="recipe-name">{{recipe.data().name}}</div>
             <br>
           </a>
 
-          <div class="recipe-name">Serving size: {{recipe.data().serving_size}}</div>
-            <br>
-            <div class="recipe-name">Web link: <a v-bind:href='recipe.data().link'>{{recipe.data().link}}</a></div>
-            <br>
             <div class="recipe-name">
             <br>
               <b>Ingredients:</b>
@@ -25,19 +19,7 @@
               </ul>
             </div>
           <div>
-            <br><button type="button" class="shopbtn" @click="onclick(recipe.id)">Add to Shopping List</button>
-            <select name="Quantity" class="foodquantity">
-              <option value="o1">1</option>
-              <option value="o2">2</option>
-              <option value="o3">3</option>
-              <option value="o4">4</option>
-              <option value="o5">5</option>
-              <option value="o6">6</option>
-              <option value="o7">7</option>
-              <option value="o8">8</option>
-              <option value="o9">9</option>
-              <option value="o10">10</option>
-            </select><br>
+            <button type="button" class="shopbtn" @click="onclick(recipe.id)">Remove</button>
           </div>
         </div>
       </div>
@@ -67,6 +49,44 @@ export default {
         back() {
             location.reload();
             //console.log(querySnapshot)
+        },
+        async onclick(recipeId) {
+            
+            let shoppingListId;
+            
+            let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
+      
+            const loggedInUsersId = firebase.auth().currentUser.uid;
+            console.log("User id: " , loggedInUsersId)
+
+            usersShoppingLists.forEach(doc => {
+            if (doc.data().userId === loggedInUsersId) {
+            shoppingListId = doc.id 
+            console.log("Shopping List Id: ", shoppingListId)
+        }
+      })
+            let recipeids = []
+
+            await db.collection('shoppingLists')
+            .doc(shoppingListId)
+            .get()
+            .then (querySnapshot => {
+                querySnapshot.data().recipeIds.forEach(id => {
+                if (recipeId != id) {
+                    recipeids.push(id)
+                }
+                })
+            })
+
+            console.log("Remove ids: ", recipeids)
+            await db.collection('shoppingLists')
+            .doc(shoppingListId)
+            .update({
+                recipeIds: recipeids
+            })
+
+            window.location.reload()
+
         }
         
     },
@@ -105,32 +125,6 @@ export default {
         })
       })
 
-        // db.collection('users')
-        // .doc('MESV3Sx0cDBTK82da0U8')
-        // .collection('shoppinglist')
-        // .get()
-        // .then(querySnapshot => {
-          
-        //   querySnapshot.forEach(doc => {
-        //     console.log(doc.data())
-        //     this.recipeId.push(doc.data().recipes.recipeid)
-        //     console.log(this.recipeId)
-
-        //   })
-
-        //   db.collection('recipes')
-        //   .doc(this.recipeId[0])
-        //   .get()
-        //   .then(querySnapshot => {
-        //       this.ShoppingList.push(querySnapshot.data())
-        //       console.log(this.ShoppingList)
-        //   })
-          //this.ShoppingList = querySnapshot.docs.map(doc => doc.data())
-          //console.log(this.ShoppingList[0].userid);
-          // do something with documents
-        //})
-        //console.log(this.ShoppingList)
-        //this.getShoppingList();
     }
 }
 </script>
