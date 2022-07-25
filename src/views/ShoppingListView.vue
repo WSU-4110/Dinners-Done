@@ -50,19 +50,18 @@ export default {
             location.reload();
             //console.log(querySnapshot)
         },
-        async onclick(recipeId) {
+        //create a button to remove recipes from shopping list
+        async onclick(recipeIdtoRemove) {
             
             let shoppingListId;
             
             let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
       
             const loggedInUsersId = firebase.auth().currentUser.uid;
-            console.log("User id: " , loggedInUsersId)
 
             usersShoppingLists.forEach(doc => {
             if (doc.data().userId === loggedInUsersId) {
             shoppingListId = doc.id 
-            console.log("Shopping List Id: ", shoppingListId)
         }
       })
             let recipeids = []
@@ -72,13 +71,13 @@ export default {
             .get()
             .then (querySnapshot => {
                 querySnapshot.data().recipeIds.forEach(id => {
-                if (recipeId != id) {
+                //if recipe id does not match dont push it
+                if (recipeIdtoRemove != id) {
                     recipeids.push(id)
                 }
                 })
             })
 
-            console.log("Remove ids: ", recipeids)
             await db.collection('shoppingLists')
             .doc(shoppingListId)
             .update({
