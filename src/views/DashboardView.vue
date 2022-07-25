@@ -10,22 +10,23 @@
             <br>
           </a>
 
-          <div class="recipe-name">Author: {{recipe.author}}</div>
+          <div class="recipe-name">Serving size: {{recipe.serving_size}}</div>
             <br>
-            <div class="recipe-name">Amount Fed: {{recipe.amount_fed}}</div>
+            <div class="recipe-name">Web link: <a v-bind:href='recipe.link'>{{recipe.link}}</a></div>
             <br>
             <div class="recipe-name">
+            <br>
               <b>Ingredients:</b>
               <ul v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.name + ingredient.size">
                 <li style="display: block; color: black"> Name: {{ingredient.name }}</li>
                 <li style="display: block; color: black">Amount: {{ingredient.amount }}</li>
-                <li style="display: block; color: black">Size: {{ingredient.size }} <br></li>
+                <li style="display: block; color: black">Size: {{ingredient.unit }} <br></li>
                 <div style="height: 10px; display: block"></div>
               </ul>
             </div>
           <div>
             <br><button type="button" class="favbtn" v-if="user.loggedIn">Add Favorite</button>
-            <br><button type="button" class="shopbtn" @click="shopBtnFunction()">Add to Shopping List</button>
+            <br><button type="button" class="shopbtn" @click="onclick()">Add to Shopping List</button>
                 <span class="popuptext" id="myPopup">Added to Shopping List</span>
             <select name="Quantity" class="foodquantity">
               <option value="o1">1</option>
@@ -53,6 +54,7 @@
 import {db} from "@/main";
 //import { browserPopupRedirectResolver } from "@firebase/auth";
 import {mapGetters} from "vuex";
+import firebase from "firebase/compat/app";
 // import {collection } from "firebase/firestore"
 
 export default {
@@ -77,11 +79,52 @@ export default {
   methods: {
     submit() {
     },
-    shopBtnFunction()  {
-    var shopbtn = document.getElementById("myPopup");
-    //console.log("Something");
-    shopbtn.classList.toggle("show");
-    }
+    async onclick() {
+      //this will store recipe id in the users shopping list if user does not have shopping list we will create one
+      let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
+      
+      const loggedInUsersId = firebase.auth().currentUser.uid;
+      console.log("User id: " , loggedInUsersId)
+      let shoppingListId;
+
+      usersShoppingLists.forEach(doc => {
+        if (doc.data().userId === loggedInUsersId) {
+          shoppingListId = doc.id 
+          console.log("Shopping List Id: ", shoppingListId)
+        }
+      })
+
+      if(!shoppingListId) {
+          //create shopping lists for user
+          
+      }
+
+      let recipeids = []
+      
+      await db.collection('shoppingLists')
+      .doc(shoppingListId)
+      .get()
+      .then (querySnapshot => {
+          querySnapshot.data().recipeIds.forEach(id => {
+            recipeids.push(id)
+          })
+      })
+
+      // find recipe id of the one that was clicked
+      let clickedRecipeId = '5'
+
+      if (!recipeids.includes(clickedRecipeId)) {
+        recipeids.push(clickedRecipeId)
+
+        console.log("Update recipe ids: " , recipeids)
+        //update user shopping lists
+        await db.collection('shoppingLists')
+        .doc(shoppingListId)
+        .update({
+            recipeIds: recipeids
+        })      
+      }
+   }
   },
   computed: {
     // map `this.user` to `this.$store.getters.user`
