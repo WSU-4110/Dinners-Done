@@ -58,7 +58,6 @@ export default {
       this.newRecipe.RecipeUrl = '';
       this.newRecipe.RecipeNotes = '';
       alert("Successfully added")
-      this.$router.push('/ListRecipe')
       
     }
   }
