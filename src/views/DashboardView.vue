@@ -3,21 +3,21 @@
     <section>
       <div class="box">
         <div class="rbox" v-for="recipe in recipes" v-bind:key="recipe.id">
-          <a :href="recipe.link">
-            <img class="recipe-img" :src="recipe.image" >
+          <a :href="recipe.data().link">
+            <img class="recipe-img" :src="recipe.data().image" >
             <br>
-            <div class="recipe-name">{{recipe.name}}</div>
+            <div class="recipe-name">{{recipe.data().name}}</div>
             <br>
           </a>
 
-          <div class="recipe-name">Serving size: {{recipe.serving_size}}</div>
+          <div class="recipe-name">Serving size: {{recipe.data().serving_size}}</div>
             <br>
-            <div class="recipe-name">Web link: <a v-bind:href='recipe.link'>{{recipe.link}}</a></div>
+            <div class="recipe-name">Web link: <a v-bind:href='recipe.data().link'>{{recipe.data().link}}</a></div>
             <br>
             <div class="recipe-name">
             <br>
               <b>Ingredients:</b>
-              <ul v-for="ingredient in recipe.ingredients" v-bind:key="ingredient.name + ingredient.size">
+              <ul v-for="ingredient in recipe.data().ingredients" v-bind:key="ingredient.name + ingredient.size">
                 <li style="display: block; color: black"> Name: {{ingredient.name }}</li>
                 <li style="display: block; color: black">Amount: {{ingredient.amount }}</li>
                 <li style="display: block; color: black">Size: {{ingredient.unit }} <br></li>
@@ -26,7 +26,7 @@
             </div>
           <div>
             <br><button type="button" class="favbtn" v-if="user.loggedIn">Add Favorite</button>
-            <br><button type="button" class="shopbtn" @click="onclick()">Add to Shopping List</button>
+            <br><button type="button" class="shopbtn" @click="onclick(recipe.id)">Add to Shopping List</button>
             <select name="Quantity" class="foodquantity">
               <option value="o1">1</option>
               <option value="o2">2</option>
@@ -71,7 +71,7 @@ export default {
         .get()
         .then(querySnapshot => {
           console.log(querySnapshot);
-          this.recipes = querySnapshot.docs.map(doc => doc.data())
+          this.recipes = querySnapshot.docs
           // do something with documents
         })
 
@@ -79,7 +79,7 @@ export default {
   methods: {
     submit() {
     },
-    async onclick() {
+    async onclick(recipeId) {
       //this will store recipe id in the users shopping list if user does not have shopping list we will create one
       let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
       
@@ -104,7 +104,6 @@ export default {
         recipeIds: recipeids,
         userId: loggedInUsersId
         })).id
-        console.log("ShoppingListId: ", shoppingListId);
       }
       
       await db.collection('shoppingLists')
@@ -117,7 +116,8 @@ export default {
       })
 
       // find recipe id of the one that was clicked
-      let clickedRecipeId = '6'
+      console.log("recipeId: ", recipeId)
+      let clickedRecipeId = recipeId
 
 
       if (!recipeids.includes(clickedRecipeId)) {
