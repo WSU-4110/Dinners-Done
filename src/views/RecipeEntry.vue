@@ -1,6 +1,6 @@
 <template>
         <div class="content1">
-            <form id="form" onsubmit="return false">
+            <form v-on:submit.prevent="addRecipe">
                 <div class="form-group">
                     <label for="RecipeName">Recipe Name<br></label>
                     <input type="text1" class="form-control" id="RecipeName" placeholder="Enter name">
@@ -26,6 +26,7 @@
         </div>
 </template>
 
+
 <script>
 
 import {db} from "@/main";
@@ -33,7 +34,7 @@ import {db} from "@/main";
 export default {
   name: 'RecipeEntryForm',
   firebase: {
-    recipeentry: db.ref('recipeentry')
+    recipeentry: db.collection('recipeentry')
   },
   data() {
     return {
