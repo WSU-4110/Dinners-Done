@@ -51,6 +51,11 @@ export default {
 
       // get logged in users id
       const loggedInUsersId = firebase.auth().currentUser.uid;
+
+      await db.collection("shoppingLists").add( {
+        recipeIds: [],
+        userId: loggedInUsersId
+      })
       
       // go through all the usersShoppingList docs and find the one with the logged in users Id
       // and save all the recipe ids into our data

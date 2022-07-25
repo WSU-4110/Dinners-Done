@@ -27,7 +27,6 @@
           <div>
             <br><button type="button" class="favbtn" v-if="user.loggedIn">Add Favorite</button>
             <br><button type="button" class="shopbtn" @click="onclick()">Add to Shopping List</button>
-                <span class="popuptext" id="myPopup">Added to Shopping List</span>
             <select name="Quantity" class="foodquantity">
               <option value="o1">1</option>
               <option value="o2">2</option>
@@ -67,6 +66,7 @@ export default {
     //this.$route.params.id  .doc()
     //  db.collection("recipes").get().then((data) =>
     //  this.recipes = data.docs );
+    
     db.collection('recipes')
         .get()
         .then(querySnapshot => {
@@ -85,6 +85,8 @@ export default {
       
       const loggedInUsersId = firebase.auth().currentUser.uid;
       console.log("User id: " , loggedInUsersId)
+
+
       let shoppingListId;
 
       usersShoppingLists.forEach(doc => {
@@ -94,12 +96,16 @@ export default {
         }
       })
 
+      let recipeids = []
+
       if(!shoppingListId) {
           //create shopping lists for user
-          
+        shoppingListId = (await db.collection("shoppingLists").add( {
+        recipeIds: recipeids,
+        userId: loggedInUsersId
+        })).id
+        console.log("ShoppingListId: ", shoppingListId);
       }
-
-      let recipeids = []
       
       await db.collection('shoppingLists')
       .doc(shoppingListId)
@@ -111,7 +117,8 @@ export default {
       })
 
       // find recipe id of the one that was clicked
-      let clickedRecipeId = '5'
+      let clickedRecipeId = '6'
+
 
       if (!recipeids.includes(clickedRecipeId)) {
         recipeids.push(clickedRecipeId)
