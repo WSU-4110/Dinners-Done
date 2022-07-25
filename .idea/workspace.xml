@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="014bc10a-468a-4199-90bf-e1f9036abdfc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/ShoppingListTest_getName.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Dinners-Done.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Dinners-Done.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LoginServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/LoginServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Recipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/Recipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipeEntryServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/RecipeEntryServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RecipeListServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/RecipeListServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ShoppingList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ShoppingListIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/demo/ShoppingListIngredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SiteLink.java" beforeDir="false" afterPath="$PROJECT_DIR$/SiteLink.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WelcomeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/WelcomeServlet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +66,8 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.ShoppingListTest (1)">
-    <configuration name="ShoppingListTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ShoppingListTest.setUnit">
+    <configuration name="ShoppingListTest.getAmount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Dinners-Done" />
       <extension name="coverage">
         <pattern>
@@ -89,53 +77,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="CSC4100Project" />
       <option name="MAIN_CLASS_NAME" value="CSC4100Project.ShoppingListTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShoppingListTest" type="JUnit" factoryName="JUnit" temporary="true">
-      <module name="Dinners-Done" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="demo" />
-      <option name="MAIN_CLASS_NAME" value="demo.ShoppingListTest" />
-      <option name="METHOD_NAME" value="getName" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShoppingListTest.getName (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="demo" />
-      <option name="MAIN_CLASS_NAME" value="demo.ShoppingListTest" />
-      <option name="METHOD_NAME" value="getName" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShoppingListTest.getName (2)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Dinners-Done" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="CSC4100Project.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="CSC4100Project" />
-      <option name="MAIN_CLASS_NAME" value="CSC4100Project.ShoppingListTest" />
-      <option name="METHOD_NAME" value="getName" />
+      <option name="METHOD_NAME" value="getAmount" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -285,16 +227,6 @@
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="PACKAGE_NAME" value="demo" />
       <option name="MAIN_CLASS_NAME" value="demo.ShoppingListTest" />
-      <option name="METHOD_NAME" value="getName" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ShoppingListTest.getName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Dinners-Done" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="ShoppingListTest" />
       <option name="METHOD_NAME" value="getName" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -405,6 +337,70 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ShoppingListTest.getUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dinners-Done" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CSC4100Project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CSC4100Project" />
+      <option name="MAIN_CLASS_NAME" value="CSC4100Project.ShoppingListTest" />
+      <option name="METHOD_NAME" value="getUnit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShoppingListTest.setAmount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dinners-Done" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CSC4100Project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CSC4100Project" />
+      <option name="MAIN_CLASS_NAME" value="CSC4100Project.ShoppingListTest" />
+      <option name="METHOD_NAME" value="setAmount" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShoppingListTest.setName" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dinners-Done" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CSC4100Project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CSC4100Project" />
+      <option name="MAIN_CLASS_NAME" value="CSC4100Project.ShoppingListTest" />
+      <option name="METHOD_NAME" value="setName" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShoppingListTest.setUnit" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Dinners-Done" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="CSC4100Project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="CSC4100Project" />
+      <option name="MAIN_CLASS_NAME" value="CSC4100Project.ShoppingListTest" />
+      <option name="METHOD_NAME" value="setUnit" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="demo in Dinners-Done" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Dinners-Done" />
       <extension name="coverage">
@@ -423,11 +419,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ShoppingListTest (1)" />
-        <item itemvalue="JUnit.ShoppingListTest.getName (2)" />
-        <item itemvalue="JUnit.ShoppingListTest.getName" />
-        <item itemvalue="JUnit.ShoppingListTest.getName (1)" />
-        <item itemvalue="JUnit.ShoppingListTest.getName (1)" />
+        <item itemvalue="JUnit.ShoppingListTest.setUnit" />
+        <item itemvalue="JUnit.ShoppingListTest.getUnit" />
+        <item itemvalue="JUnit.ShoppingListTest.setAmount" />
+        <item itemvalue="JUnit.ShoppingListTest.getAmount" />
+        <item itemvalue="JUnit.ShoppingListTest.setName" />
       </list>
     </recent_temporary>
   </component>
@@ -439,7 +435,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1654018231638</updated>
-      <workItem from="1658705288967" duration="2383000" />
+      <workItem from="1658705288967" duration="3042000" />
     </task>
     <servers />
   </component>
