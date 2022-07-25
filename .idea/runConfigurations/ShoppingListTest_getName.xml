@@ -1,0 +1,18 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ShoppingListTest.getName" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+    <module name="Dinners-Done" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="demo.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="PACKAGE_NAME" value="demo" />
+    <option name="MAIN_CLASS_NAME" value="demo.ShoppingListTest" />
+    <option name="METHOD_NAME" value="getName" />
+    <option name="TEST_OBJECT" value="method" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

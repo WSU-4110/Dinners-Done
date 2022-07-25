@@ -1,3 +1,4 @@
+/**
 package DD;
 
 import java.io.IOException;
@@ -45,14 +46,14 @@ public class RecipeListServlet extends HttpServlet {
 	        }
  
 	        out.close();
-*/
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response)  
 	        throws ServletException, IOException { 
        /* try {
 			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e2) {
 			e2.printStackTrace();
-		}*/
+		}
         String url = "jdbc:mysql://localhost/DinnersDone";
 
         try {
@@ -90,7 +91,7 @@ public class RecipeListServlet extends HttpServlet {
             while(rset.next()) {   // process each row
                 String name = rset.getString("name");      // get name of recipe
                 System.out.println("\n" + name + "\n");
-            }*/
+            }
 
 
 
@@ -147,5 +148,6 @@ public class RecipeListServlet extends HttpServlet {
         }
     }
 }
+ */
 
 

@@ -1,3 +1,4 @@
+/**
 package DD;
 
 import java.sql.Connection;
@@ -78,7 +79,7 @@ public String getDescription() {
 /* the following function will take the user input from the website
 to add ingredients for a recipe to the user's individual database of recipes
 that recipe's information will only be available to that user and the system
- */
+
 @SuppressWarnings("deprecation")
 public void getInfoToAddToRecipeList(Connection c) throws SQLException {
     //TODO:  get info for inputting recipe when the interface is completed by B.Martins - due 6/2
@@ -107,14 +108,14 @@ public void getInfoToAddToRecipeList(Connection c) throws SQLException {
         After the entire list of ingredients' quantities for new recipe added,
             set output to screen that the recipe has been added
             display new recipe on screen via query and retrieval
-        */
+
         s.executeUpdate("UPDATE INGREDIENTS IN RECIPE");
                  /*ingredient will only be used for equivalence check
                  unit should not be needed, as it is supposed to be pre-entered in form and unchanging
                  following verification of name equivalence of ingredient
                     use corresponding name to insert new quantity
                     loop through entire ingredients list following same format
-                  */
+
         String query = "ADD INGREDIENT, QUANTITY, UNIT from RECIPES";
 
 
@@ -135,3 +136,4 @@ public void getInfoToAddToRecipeList(Connection c) throws SQLException {
 }
 
 }
+ */

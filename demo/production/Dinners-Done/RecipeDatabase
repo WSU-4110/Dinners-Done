@@ -1,0 +1,4 @@
+When cloning the repo do not create a folder for it, just go to the directory you want it and it will make the folder for you when you clone.
+I have commented out code that can easily show all the data in the database to make it easier for us to work on, just uncomment as needed.
+I have also included the functionality and queries needed for the searchability.
+There is 3 recipes in there for now until I know this will work out for us then I can add more.

@@ -1,3 +1,4 @@
+/**
 package DD;
 
 import java.io.IOException;  
@@ -25,4 +26,5 @@ public void doPost(HttpServletRequest request, HttpServletResponse response)
     out.close();  
     }  
   
-} 
+}
+ */

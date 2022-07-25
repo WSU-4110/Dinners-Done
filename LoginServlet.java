@@ -1,3 +1,4 @@
+/**
 package DD;
 
 import java.io.IOException;  
@@ -93,3 +94,4 @@ public static boolean validate(String name,String pass){
 	return status;  
 	}  
 } 
+*/
