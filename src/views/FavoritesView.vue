@@ -24,8 +24,8 @@
               </ul>
             </div>
           <div>
-            <br><button type="button" class="favbtn" @click="onclickFav(recipe.id)" >Add Favorite</button>
-            <br><button type="button" class="shopbtn" @click="onclickShop(recipe.id)">Add to Shopping List</button>
+            <br><button type="button" class="favbtn" @click="onclickRemove(recipe.id)">Remove</button>
+            <br><button type="button" class="shopbtn" @click="onclick(recipe.id)">Add to Shopping List</button>
           </div>
         </div>
       </div>
@@ -33,10 +33,7 @@
   </div>
 </template>
 
-
 <script>
-
-
 import {db} from "@/main";
 //import { browserPopupRedirectResolver } from "@firebase/auth";
 import {mapGetters} from "vuex";
@@ -49,23 +46,38 @@ export default {
       recipes: [],
     };
   },
-  created() {
-    //this.$route.params.id  .doc()
-    //  db.collection("recipes").get().then((data) =>
-    //  this.recipes = data.docs );
-    
-    db.collection('recipes')
+  async created() {
+        let usersFavorites = (await db.collection('favorites').get()).docs;
+
+      // get logged in users id
+      const loggedInUsersId = firebase.auth().currentUser.uid;
+      
+      // go through all the usersFavorites docs and find the one with the logged in users Id
+      // and save all the recipe ids into our data
+      let recipeIds = [];
+
+      usersFavorites.forEach(doc => {
+        if (doc.data().userId === loggedInUsersId) {
+          doc.data().recipeIds.forEach(id => {
+            recipeIds.push(id);
+          })
+        }
+      })
+
+      recipeIds.forEach(async id => {
+        await db.collection('recipes')
+        .doc(id)
         .get()
-        .then(querySnapshot => {
-          console.log(querySnapshot);
-          this.recipes = querySnapshot.docs
+        .then (querySnapshot => {
+          this.recipes.push(querySnapshot)
         })
+      })
 
   },
   methods: {
     submit() {
     },
-    async onclickShop(recipeId) {
+    async onclick(recipeId) {
       //this will store recipe id in the users shopping list if user does not have shopping list we will create one
       let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
       
@@ -120,61 +132,44 @@ export default {
 
       alert("Added to Shopping List")
    },
-   async onclickFav(recipeId) {
-      console.log("clicked")
-      //this will store recipe id in the users shopping list if user does not have shopping list we will create one
-      let usersFavoritesLists = (await db.collection('favorites').get()).docs;
+
+   async onclickRemove(recipeIdtoRemove) {
+            
+            let favoritesId;
+            
+            let usersFavoritesLists = (await db.collection('favorites').get()).docs;
       
-      const loggedInUsersId = firebase.auth().currentUser.uid;
-      console.log("User id: " , loggedInUsersId)
+            const loggedInUsersId = firebase.auth().currentUser.uid;
 
-
-      let favoritesId;
-
-      usersFavoritesLists.forEach(doc => {
-        if (doc.data().userId === loggedInUsersId) {
-          favoritesId = doc.id 
+            usersFavoritesLists.forEach(doc => {
+            if (doc.data().userId === loggedInUsersId) {
+            favoritesId = doc.id 
         }
       })
 
-      let recipeids = []
+                  let recipeids = []
 
-      if(!favoritesId) {
-          //create shopping lists for user
-        favoritesId = (await db.collection("favorites").add( {
-        recipeIds: recipeids,
-        userId: loggedInUsersId
-        })).id
-      }
-      
-      await db.collection('favorites')
-      .doc(favoritesId)
-      .get()
-      .then (querySnapshot => {
-          querySnapshot.data().recipeIds.forEach(id => {
-            recipeids.push(id)
-          })
-      })
+            await db.collection('favorites')
+            .doc(favoritesId)
+            .get()
+            .then (querySnapshot => {
+                querySnapshot.data().recipeIds.forEach(id => {
+                //if recipe id does not match dont push it
+                if (recipeIdtoRemove != id) {
+                    recipeids.push(id)
+                }
+                })
+            })
 
-      // find recipe id of the one that was clicked
-      let clickedRecipeId = recipeId
+            await db.collection('favorites')
+            .doc(favoritesId)
+            .update({
+                recipeIds: recipeids
+            })
 
+            window.location.reload()
 
-      if (!recipeids.includes(clickedRecipeId)) {
-        recipeids.push(clickedRecipeId)
-
-        //update user favorites lists
-        await db.collection('favorites')
-        .doc(favoritesId)
-        .update({
-            recipeIds: recipeids
-        })      
-      }
-
-      alert("Added to Favorites")
-   },
   },
-
   computed: {
     // map `this.user` to `this.$store.getters.user`
     ...mapGetters({
@@ -183,11 +178,11 @@ export default {
   }
 
 
-};
+}
+}
 
 </script>
 
 <style>
 @import '../assets/style.css';
 </style>
-
