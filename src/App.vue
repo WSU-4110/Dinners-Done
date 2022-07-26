@@ -9,7 +9,6 @@
             <li class="nav" v-if="! user.loggedIn">  <router-link to="/register">Register</router-link></li>
             <li class="nav" v-if="user">  <router-link to="/dashboard">Recipes</router-link></li>
             <li class="nav" v-if="user">  <router-link to="/shoppinglist">Shopping List</router-link></li>
-            <button class="nav" v-if="user.loggedIn" @click="signOut">Sign out</button>
           </ul>
         </nav>
 
