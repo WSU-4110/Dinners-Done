@@ -8,6 +8,7 @@
             <li class="nav" v-if="! user.loggedIn">  <router-link to="/login">Login</router-link></li>
             <li class="nav" v-if="! user.loggedIn">  <router-link to="/register">Register</router-link></li>
             <li class="nav" v-if="user">  <router-link to="/dashboard">Recipes</router-link></li>
+            <li class="logout" v-if="user.loggedIn" @click="signOut">Sign out</li>
             <li class="nav" v-if="user">  <router-link to="/shoppinglist">Shopping List</router-link></li>
           </ul>
         </nav>
