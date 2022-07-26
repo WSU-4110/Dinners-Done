@@ -15,12 +15,11 @@
             <div class="recipe-name">Web link: <a v-bind:href='recipe.data().link'>{{recipe.data().link}}</a></div>
             <br>
             <div class="recipe-name">
-            <br>
               <b>Ingredients:</b>
               <ul v-for="ingredient in recipe.data().ingredients" v-bind:key="ingredient.name + ingredient.size">
                 <li style="display: block; color: black"> Name: {{ingredient.name }}</li>
                 <li style="display: block; color: black">Amount: {{ingredient.amount }}</li>
-                <li style="display: block; color: black">Size: {{ingredient.unit }} <br></li>
+                <li style="display: block; color: black">Size: {{ingredient.size }} <br></li>
                 <div style="height: 10px; display: block"></div>
               </ul>
             </div>
