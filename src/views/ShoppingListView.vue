@@ -23,6 +23,15 @@
           </div>
         </div>
       </div>
+      <div class="iboxes">
+        <div v-for="([name, unitAmountList], key) in IngredientsList" :key="key">
+        <h1 align="left">{{name}}</h1>
+        <li align="left" v-for="([unit, amount], key) in unitAmountList" :key="key">
+          {{amount}}
+          {{unit}}
+        </li>
+        </div>
+      </div>
     </section>
   </div>
 </template>
@@ -42,7 +51,8 @@ export default {
     },
     data() {
         return {
-            ShoppingList: []
+            ShoppingList: [],
+            IngredientsList: Map
         }
     },
     methods: {
@@ -108,21 +118,39 @@ export default {
         }
       })
 
-      console.log("RecipeIds: ", recipeIds)
-
-
       // with all the recipe ids, we need to go through the recipes table and for each recipe
       // that has the matching id, save that to our ShoppingList data
-
-      recipeIds.forEach(id => {
-        db.collection('recipes')
+      this.IngredientsList = new Map()
+        
+        console.log("recipeIds: ", recipeIds)
+      recipeIds.forEach(async id => {
+        await db.collection('recipes')
         .doc(id)
         .get()
         .then (querySnapshot => {
           this.ShoppingList.push(querySnapshot)
-          console.log(this.ShoppingList)
+          querySnapshot.data().ingredients.forEach(ingredient => { 
+              let unitAmountMap;
+
+              unitAmountMap = this.IngredientsList.get(ingredient.name)
+
+              let unitAmount = ingredient.amount;
+              if (!unitAmountMap) {
+                unitAmountMap = new Map()
+              } else {
+                const storedUnitAmount = unitAmountMap.get(ingredient.unit);
+                if (storedUnitAmount) {
+                  unitAmount += storedUnitAmount
+                }
+              }
+
+              unitAmountMap.set(ingredient.unit, unitAmount)
+              this.IngredientsList.set(ingredient.name, unitAmountMap)
+          })
         })
       })
+
+      console.log("Lists: " , this.IngredientsList)
 
     }
 }
