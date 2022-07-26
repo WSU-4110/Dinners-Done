@@ -19,7 +19,7 @@
                 <div class="form-group">
                     <label for="Recipe">Recipe Notes<br></label>
                     <textarea name="textarea" id="Recipe" rows="10" cols="40"></textarea>
-                    <input type="submit">
+                    <input type="submit" value="Add Recipe">
                 </div>    
 
             </form>
