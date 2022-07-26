@@ -24,8 +24,9 @@
         </div>
       </div>
       <div class="iboxes">
+        <h1>Shopping List:</h1>
         <div v-for="([name, unitAmountList], key) in IngredientsList" :key="key">
-        <h1 align="left">{{name}}</h1>
+        <h2 align="left">{{name}}</h2>
         <li align="left" v-for="([unit, amount], key) in unitAmountList" :key="key">
           {{amount}}
           {{unit}}

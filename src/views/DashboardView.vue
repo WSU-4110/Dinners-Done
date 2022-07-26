@@ -27,18 +27,6 @@
           <div>
             <br><button type="button" class="favbtn" v-if="user.loggedIn">Add Favorite</button>
             <br><button type="button" class="shopbtn" @click="onclick(recipe.id)">Add to Shopping List</button>
-            <select name="Quantity" class="foodquantity">
-              <option value="o1">1</option>
-              <option value="o2">2</option>
-              <option value="o3">3</option>
-              <option value="o4">4</option>
-              <option value="o5">5</option>
-              <option value="o6">6</option>
-              <option value="o7">7</option>
-              <option value="o8">8</option>
-              <option value="o9">9</option>
-              <option value="o10">10</option>
-            </select><br>
           </div>
         </div>
       </div>
@@ -72,7 +60,6 @@ export default {
         .then(querySnapshot => {
           console.log(querySnapshot);
           this.recipes = querySnapshot.docs
-          // do something with documents
         })
 
   },
@@ -131,6 +118,8 @@ export default {
             recipeIds: recipeids
         })      
       }
+
+      alert("Added to Shopping List")
    }
   },
   computed: {
