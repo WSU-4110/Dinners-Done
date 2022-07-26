@@ -19,7 +19,7 @@
             {{error.value}}
           </div>
 <!--          <div class="pass"><a href="#">Forgot password?</a></div>-->
-          <div class="button">
+          <div class="buttn">
             <input type="submit" value="Login">
           </div>
 
