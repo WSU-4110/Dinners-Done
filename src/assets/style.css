@@ -157,6 +157,19 @@ body{
     color: black;
 }
 
+.iboxes {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    font-size: 20px;
+    align-items: justif;
+    border: 1px solid rgb(0,0,0,.8);
+    width: 60%;
+    margin: 60px auto;
+    /*  background-color: rgb(255,255,255,.7);*/
+    color: black;
+}
+
 .recipe-img {
     height: 190px;
     width: 220px;
@@ -183,6 +196,23 @@ body{
     margin: 4px 2px;
     transition-duration: 0.4s;
     cursor: pointer;
+}
+.shopbtn{
+    border-radius: 20px;
+    border-color:#E37383;
+    color:#E37383;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .foodquantity{
