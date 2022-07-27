@@ -1,4 +1,5 @@
 <template>
+//Navigation menu
   <nav>
         <nav class="menu">
           <ul>
@@ -20,13 +21,13 @@
   </nav>
   <router-view/>
 </template>
-
+//To map vue state to firebase
 <script>
 import { mapGetters } from "vuex";
 import firebase from "firebase/compat/app";
 
 export default {
-
+//signout from firebase and redirect to login page
   methods:{
     signOut() {
       firebase
@@ -49,6 +50,8 @@ export default {
 };
 
 </script>
+
+//Adding some stylesheet
 <style>
 @import './assets/style.css';
 
