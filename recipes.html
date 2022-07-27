@@ -37,9 +37,9 @@
                         <div class="recipe-name">{{recipe.author}}</div>
                     </a>
                     <div>
-                        <br><button type="button" class="favbtn">Add Favorite</button>
-                        <br><button type="button" class="ashoppingbtn">Add to Shopping List</button>
-                        <select id="Quantity" class="foodquantity">
+                        <br><button type="button" class="favbtn">Add Favorite</button> <!-- Add favorite button on the webpage -->
+                        <br><button type="button" class="ashoppingbtn">Add to Shopping List</button> <!--Add to shopping list button on the site -->
+                        <select id="Quantity" class="foodquantity"> <!--You can choose from 1-10 on how many meals you want of a certain sort -->
                             <option value="o1">1</option>
                             <option value="o2">2</option>
                             <option value="o3">3</option>
@@ -58,9 +58,9 @@
     </div>
 </body>
 <script>
-  const { createApp } = Vue
+  const { createApp } = Vue 
 
-  createApp({
+  createApp({ //All the meals and images linked to the webpage
     data() {
       return {
         recipes: [
@@ -155,14 +155,14 @@
 
 <script>
 
-const fav_list = [];
-const favorites = document.querySelectorAll(".favbtn");
-for(let i=0;i<favorites.length;i++){
-favorites[i].addEventListener("click",(e)=>{
-console.log(e.target.parentNode.parentNode.getAttribute("name"));
-if(favorites){
+const fav_list = []; //An empty list for meals to be added when clicked
+const favorites = document.querySelectorAll(".favbtn"); //whichever button you click it will select
+for(let i=0;i<favorites.length;i++){ //loop through each element 
+favorites[i].addEventListener("click",(e)=>{ //whichever button is clicked on the site it will save
+console.log(e.target.parentNode.parentNode.getAttribute("name")); //This will get the meal name
+if(favorites){ //when clicked it will push to the empty array
     fav_list.push(e.target.parentNode.parentNode.getAttribute("name"));
-    console.log(fav_list);
+    console.log(fav_list); //This will print your meals 
     }
 }); 
 }
