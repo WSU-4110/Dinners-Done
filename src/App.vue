@@ -9,7 +9,8 @@
             <li class="nav" v-if="! user.loggedIn">  <router-link to="/register">Register</router-link></li>
             <li class="nav" v-if="user">  <router-link to="/recipeentry">Recipe Entry</router-link></li>
             <li class="nav" v-if="user">  <router-link to="/dashboard">Recipes</router-link></li>
-            <button class="nav" v-if="user.loggedIn" @click="signOut">Sign out</button>
+            <li class="logout" v-if="user.loggedIn" @click="signOut">Sign out</li>
+            <li class="nav" v-if="user">  <router-link to="/shoppinglist">Shopping List</router-link></li>
           </ul>
         </nav>
 
@@ -22,6 +23,7 @@
 <script>
 import { mapGetters } from "vuex";
 import firebase from "firebase/compat/app";
+
 export default {
 
   methods:{
