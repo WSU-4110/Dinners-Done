@@ -3,6 +3,7 @@
         <div class="content1">
             <!-- function addRecipe call-->
             <form v-on:submit.prevent="addRecipe">
+            <!-- html form-->
                 <div class="form-group">
                     <label for="RecipeName">Recipe Name<br></label>
                     <input type="text1" class="form-control" id="RecipeName" v-model="newRecipe.RecipeName" placeholder="Enter name">
