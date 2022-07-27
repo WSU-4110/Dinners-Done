@@ -44,7 +44,9 @@
 
 
 <script>
+//Importing the functions from firebase
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
+//Register the user to firebase
 export default {
   data() {
     return {
@@ -57,6 +59,7 @@ export default {
       error: null
     };
   },
+   //Register Form validation
   methods: {
     validateForm(){
       var valid = true;
@@ -90,8 +93,9 @@ export default {
 
     submit() {
       if(this.validateForm()) {
-
+  //Authorize and register the user
       const auth = getAuth();
+       //Creaating user with email and password
       createUserWithEmailAndPassword(auth, this.form.email, this.form.password)
           .then((user) => {
             if (user) {
@@ -100,9 +104,11 @@ export default {
                 photoURL: ''
               })
             }
+             //Navigating to the url
             this.$router.push('/');
 
           })
+           //Handling the errors
           .catch(err => {
             this.error = err.message;
           });
