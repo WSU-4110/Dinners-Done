@@ -3,6 +3,7 @@
     <section>
       <div class="container">
         <div class="title"><span>Login</span></div>
+        //Prevents the default html behavior
         <form action="#" @submit.prevent="submit">
           <div class="text">
 
@@ -38,8 +39,9 @@ import {
   signInWithEmailAndPassword,
     getAuth
 } from "firebase/auth";
+// Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth();
-
+//Authenticate the user to firebase
 export default {
   data() {
     return {
@@ -55,12 +57,14 @@ export default {
   },
   methods: {
     submit() {
+    //When signed in redirect to the dashboard page
       signInWithEmailAndPassword(auth, this.form.email, this.form.password)
           .then((user) => {
             console.log(user);
             this.$router.push("/dashboard");
 
           })
+          //Login Form validation
           .catch((error) => {
             switch (error.code) {
               case "auth/invalid-email":
