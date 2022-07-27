@@ -1,5 +1,7 @@
+<!-- html page for recipe entry-->
 <template>
         <div class="content1">
+            <!-- function addRecipe call-->
             <form v-on:submit.prevent="addRecipe">
                 <div class="form-group">
                     <label for="RecipeName">Recipe Name<br></label>
@@ -28,9 +30,9 @@
 
 
 <script>
-
+// initializin db and vue instance
 import {db} from "@/main";
-
+// firebase database fields
 export default {
   data() {
     return {
@@ -43,17 +45,22 @@ export default {
     }
   },
   methods: {
+    // addRecipe function
     addRecipe() {
+      // add new recipe to collection
       db.collection('recipeentry').add({
+        // db fields
         RecipeName: this.newRecipe.RecipeName,
         RecipeAuthor: this.newRecipe.RecipeAuthor,
         RecipeUrl: this.newRecipe.RecipeUrl,
         RecipeNotes: this.newRecipe.RecipeNotes
       })
+      // clear form
       this.newRecipe.RecipeName = '';
       this.newRecipe.RecipeAuthor = '';
       this.newRecipe.RecipeUrl = '';
       this.newRecipe.RecipeNotes = '';
+      // display message after recipe added
       alert("Successfully added")
       
     }
