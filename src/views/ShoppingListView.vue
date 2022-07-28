@@ -43,8 +43,6 @@
 <script>
 import {db} from "@/main";
 import firebase from "firebase/compat/app";
-//import { QuerySnapshot } from "@firebase/firestore-types";
-
 
 export default {
     firestore: {
@@ -57,47 +55,52 @@ export default {
         }
     },
     methods: {
-        back() {
-            location.reload();
-            //console.log(querySnapshot)
-        },
-        //create a button to remove recipes from shopping list
-        async onclick(recipeIdtoRemove) {
+    back() {
+      location.reload();
+    },
+    //create a button to remove recipes from shopping list
+    async onclick(recipeIdtoRemove) {
             
-            let shoppingListId;
-            
-            let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
-      
-            const loggedInUsersId = firebase.auth().currentUser.uid;
+    let shoppingListId;
+    
+    //get favorites id
+    let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
+    
+    //get current user id
+    const loggedInUsersId = firebase.auth().currentUser.uid;
 
-            usersShoppingLists.forEach(doc => {
-            if (doc.data().userId === loggedInUsersId) {
-            shoppingListId = doc.id 
-        }
-      })
-            let recipeids = []
+    //get shoppingLists id from user and match with current user
+    usersShoppingLists.forEach(doc => {
+    if (doc.data().userId === loggedInUsersId) {
+    shoppingListId = doc.id 
+    }
+    })
+    
+    let recipeids = []
 
-            await db.collection('shoppingLists')
-            .doc(shoppingListId)
-            .get()
-            .then (querySnapshot => {
-                querySnapshot.data().recipeIds.forEach(id => {
-                //if recipe id does not match dont push it
-                if (recipeIdtoRemove != id) {
-                    recipeids.push(id)
-                }
-                })
-            })
+    await db.collection('shoppingLists')
+    .doc(shoppingListId)
+    .get()
+    .then (querySnapshot => {
+    querySnapshot.data().recipeIds.forEach(id => {
+    //if recipe id does not match dont push it
+        if (recipeIdtoRemove != id) {
+            recipeids.push(id)
+          }
+        })
+    })
 
-            await db.collection('shoppingLists')
-            .doc(shoppingListId)
-            .update({
-                recipeIds: recipeids
-            })
+    //update recipes in favorites collection
+    await db.collection('shoppingLists')
+    .doc(shoppingListId)
+    .update({
+        recipeIds: recipeids
+     })
 
-            window.location.reload()
+      //reload page when recipe is removed
+      window.location.reload()
 
-        }
+    }
         
     },
     async created() {
@@ -121,9 +124,11 @@ export default {
 
       // with all the recipe ids, we need to go through the recipes table and for each recipe
       // that has the matching id, save that to our ShoppingList data
+
+      //create a map to store the name of ingredient, amount/unit
       this.IngredientsList = new Map()
         
-        console.log("recipeIds: ", recipeIds)
+      //get the ingredient name , unit, and amount from recipe
       recipeIds.forEach(async id => {
         await db.collection('recipes')
         .doc(id)
@@ -133,19 +138,29 @@ export default {
           querySnapshot.data().ingredients.forEach(ingredient => { 
               let unitAmountMap;
 
+              //get map for unit and amount for specificed ingredient name
               unitAmountMap = this.IngredientsList.get(ingredient.name)
 
+              //get amount of ingredient
               let unitAmount = ingredient.amount;
+
+              //if amount for specified ingredients of that unit type (oz, cups, etc) 
+              //does not exist we create a new map 
               if (!unitAmountMap) {
                 unitAmountMap = new Map()
               } else {
+                //if exist we get ingredient amount
                 const storedUnitAmount = unitAmountMap.get(ingredient.unit);
+
+                //if stored amount is greater than 0, add to total
                 if (storedUnitAmount) {
                   unitAmount += storedUnitAmount
                 }
               }
 
+              //set the amount to unit amount map
               unitAmountMap.set(ingredient.unit, unitAmount)
+              //store unit amount map into IngredientList map
               this.IngredientsList.set(ingredient.name, unitAmountMap)
           })
         })
