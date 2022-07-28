@@ -43,8 +43,6 @@
 <script>
 import {db} from "@/main";
 import firebase from "firebase/compat/app";
-//import { QuerySnapshot } from "@firebase/firestore-types";
-
 
 export default {
     firestore: {
@@ -57,47 +55,52 @@ export default {
         }
     },
     methods: {
-        back() {
-            location.reload();
-            //console.log(querySnapshot)
-        },
-        //create a button to remove recipes from shopping list
-        async onclick(recipeIdtoRemove) {
+    back() {
+      location.reload();
+    },
+    //create a button to remove recipes from shopping list
+    async onclick(recipeIdtoRemove) {
             
-            let shoppingListId;
-            
-            let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
-      
-            const loggedInUsersId = firebase.auth().currentUser.uid;
+    let shoppingListId;
+    
+    //get favorites id
+    let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
+    
+    //get current user id
+    const loggedInUsersId = firebase.auth().currentUser.uid;
 
-            usersShoppingLists.forEach(doc => {
-            if (doc.data().userId === loggedInUsersId) {
-            shoppingListId = doc.id 
-        }
-      })
-            let recipeids = []
+    //get shoppingLists id from user and match with current user
+    usersShoppingLists.forEach(doc => {
+    if (doc.data().userId === loggedInUsersId) {
+    shoppingListId = doc.id 
+    }
+    })
+    
+    let recipeids = []
 
-            await db.collection('shoppingLists')
-            .doc(shoppingListId)
-            .get()
-            .then (querySnapshot => {
-                querySnapshot.data().recipeIds.forEach(id => {
-                //if recipe id does not match dont push it
-                if (recipeIdtoRemove != id) {
-                    recipeids.push(id)
-                }
-                })
-            })
+    await db.collection('shoppingLists')
+    .doc(shoppingListId)
+    .get()
+    .then (querySnapshot => {
+    querySnapshot.data().recipeIds.forEach(id => {
+    //if recipe id does not match dont push it
+        if (recipeIdtoRemove != id) {
+            recipeids.push(id)
+          }
+        })
+    })
 
-            await db.collection('shoppingLists')
-            .doc(shoppingListId)
-            .update({
-                recipeIds: recipeids
-            })
+    //update recipes in favorites collection
+    await db.collection('shoppingLists')
+    .doc(shoppingListId)
+    .update({
+        recipeIds: recipeids
+     })
 
-            window.location.reload()
+      //reload page when recipe is removed
+      window.location.reload()
 
-        }
+    }
         
     },
     async created() {
@@ -121,9 +124,11 @@ export default {
 
       // with all the recipe ids, we need to go through the recipes table and for each recipe
       // that has the matching id, save that to our ShoppingList data
+
+      //create a map to store the name of ingredient, amount/unit
       this.IngredientsList = new Map()
         
-        console.log("recipeIds: ", recipeIds)
+      //get the ingredient name , unit, and amount from recipe
       recipeIds.forEach(async id => {
         await db.collection('recipes')
         .doc(id)
@@ -136,10 +141,14 @@ export default {
               unitAmountMap = this.IngredientsList.get(ingredient.name)
 
               let unitAmount = ingredient.amount;
+
+              //if units are not identical with ingredient name, create a new map
               if (!unitAmountMap) {
                 unitAmountMap = new Map()
               } else {
                 const storedUnitAmount = unitAmountMap.get(ingredient.unit);
+
+                //add amount if units are identical in the ingredient
                 if (storedUnitAmount) {
                   unitAmount += storedUnitAmount
                 }
