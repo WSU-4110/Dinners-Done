@@ -65,16 +65,17 @@ export default {
   methods: {
     submit() {
     },
+
+    //add to shopping list button onclick function
     async onclickShop(recipeId) {
       //this will store recipe id in the users shopping list if user does not have shopping list we will create one
       let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
       
       const loggedInUsersId = firebase.auth().currentUser.uid;
-      console.log("User id: " , loggedInUsersId)
-
 
       let shoppingListId;
 
+      //match userid with logged in user id
       usersShoppingLists.forEach(doc => {
         if (doc.data().userId === loggedInUsersId) {
           shoppingListId = doc.id 
@@ -84,14 +85,15 @@ export default {
 
       let recipeids = []
 
+      //create shopping lists for user if one is not made
       if(!shoppingListId) {
-          //create shopping lists for user
         shoppingListId = (await db.collection("shoppingLists").add( {
         recipeIds: recipeids,
         userId: loggedInUsersId
         })).id
       }
       
+      //store recipe id into shoppingLists collection
       await db.collection('shoppingLists')
       .doc(shoppingListId)
       .get()
@@ -105,7 +107,7 @@ export default {
       console.log("recipeId: ", recipeId)
       let clickedRecipeId = recipeId
 
-
+      //check if recipe has already been added
       if (!recipeids.includes(clickedRecipeId)) {
         recipeids.push(clickedRecipeId)
 
@@ -118,19 +120,22 @@ export default {
         })      
       }
 
+      //alert box when button is clicked
       alert("Added to Shopping List")
    },
+
+   //favorite button onclick function
    async onclickFav(recipeId) {
       console.log("clicked")
-      //this will store recipe id in the users shopping list if user does not have shopping list we will create one
+      //this will store recipe id in the users favorites if user does not have favorites we will create one
       let usersFavoritesLists = (await db.collection('favorites').get()).docs;
       
       const loggedInUsersId = firebase.auth().currentUser.uid;
       console.log("User id: " , loggedInUsersId)
 
-
       let favoritesId;
 
+      //match userid with logged in user id
       usersFavoritesLists.forEach(doc => {
         if (doc.data().userId === loggedInUsersId) {
           favoritesId = doc.id 
@@ -140,13 +145,14 @@ export default {
       let recipeids = []
 
       if(!favoritesId) {
-          //create shopping lists for user
+          //create favorites lists for user
         favoritesId = (await db.collection("favorites").add( {
         recipeIds: recipeids,
         userId: loggedInUsersId
         })).id
       }
       
+      //store recipe id into favorites collection
       await db.collection('favorites')
       .doc(favoritesId)
       .get()
@@ -159,7 +165,7 @@ export default {
       // find recipe id of the one that was clicked
       let clickedRecipeId = recipeId
 
-
+      //check if recipe has already been added
       if (!recipeids.includes(clickedRecipeId)) {
         recipeids.push(clickedRecipeId)
 
@@ -171,6 +177,7 @@ export default {
         })      
       }
 
+      //alert box popup
       alert("Added to Favorites")
    },
   },
