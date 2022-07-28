@@ -64,6 +64,7 @@ export default {
         }
       })
 
+      //for each of the recipe ids gets the matching recipe from recipe collection and stores it local
       recipeIds.forEach(async id => {
         await db.collection('recipes')
         .doc(id)
@@ -77,6 +78,8 @@ export default {
   methods: {
     submit() {
     },
+
+    //add to shopping list button onclick function//
     async onclick(recipeId) {
       //this will store recipe id in the users shopping list if user does not have shopping list we will create one
       let usersShoppingLists = (await db.collection('shoppingLists').get()).docs;
@@ -84,9 +87,9 @@ export default {
       const loggedInUsersId = firebase.auth().currentUser.uid;
       console.log("User id: " , loggedInUsersId)
 
-
       let shoppingListId;
 
+      //match userid with logged in user id
       usersShoppingLists.forEach(doc => {
         if (doc.data().userId === loggedInUsersId) {
           shoppingListId = doc.id 
@@ -96,14 +99,15 @@ export default {
 
       let recipeids = []
 
+      //create shopping lists for user if one is not made
       if(!shoppingListId) {
-          //create shopping lists for user
         shoppingListId = (await db.collection("shoppingLists").add( {
         recipeIds: recipeids,
         userId: loggedInUsersId
         })).id
       }
       
+      //store recipe id into shoppingLists collection
       await db.collection('shoppingLists')
       .doc(shoppingListId)
       .get()
@@ -117,7 +121,7 @@ export default {
       console.log("recipeId: ", recipeId)
       let clickedRecipeId = recipeId
 
-
+      //check if recipe has already been added
       if (!recipeids.includes(clickedRecipeId)) {
         recipeids.push(clickedRecipeId)
 
@@ -130,44 +134,51 @@ export default {
         })      
       }
 
+      //alert box when button is clicked
       alert("Added to Shopping List")
    },
 
+  //remove button onclick
    async onclickRemove(recipeIdtoRemove) {
             
-            let favoritesId;
-            
-            let usersFavoritesLists = (await db.collection('favorites').get()).docs;
+      let favoritesId;
       
-            const loggedInUsersId = firebase.auth().currentUser.uid;
+      //get favorites id
+      let usersFavoritesLists = (await db.collection('favorites').get()).docs;
+      
+      //get current user id
+      const loggedInUsersId = firebase.auth().currentUser.uid;
 
-            usersFavoritesLists.forEach(doc => {
-            if (doc.data().userId === loggedInUsersId) {
-            favoritesId = doc.id 
+      //get favorites id from user and match with current user
+      usersFavoritesLists.forEach(doc => {
+      if (doc.data().userId === loggedInUsersId) {
+      favoritesId = doc.id 
         }
       })
 
-                  let recipeids = []
+      let recipeids = []
 
-            await db.collection('favorites')
-            .doc(favoritesId)
-            .get()
-            .then (querySnapshot => {
-                querySnapshot.data().recipeIds.forEach(id => {
-                //if recipe id does not match dont push it
-                if (recipeIdtoRemove != id) {
-                    recipeids.push(id)
-                }
-                })
-            })
+      await db.collection('favorites')
+      .doc(favoritesId)
+      .get()
+      .then (querySnapshot => {
+          querySnapshot.data().recipeIds.forEach(id => {
+          //if recipe id does not match dont push it
+          if (recipeIdtoRemove != id) {
+              recipeids.push(id)
+          }
+          })
+      })
 
-            await db.collection('favorites')
-            .doc(favoritesId)
-            .update({
-                recipeIds: recipeids
-            })
+      //update recipes in favorites collection
+      await db.collection('favorites')
+      .doc(favoritesId)
+      .update({
+          recipeIds: recipeids
+      })
 
-            window.location.reload()
+      //reload page when recipe is removed
+      window.location.reload()
 
   },
   computed: {

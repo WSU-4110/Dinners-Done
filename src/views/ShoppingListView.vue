@@ -138,23 +138,29 @@ export default {
           querySnapshot.data().ingredients.forEach(ingredient => { 
               let unitAmountMap;
 
+              //get map for unit and amount for specificed ingredient name
               unitAmountMap = this.IngredientsList.get(ingredient.name)
 
+              //get amount of ingredient
               let unitAmount = ingredient.amount;
 
-              //if units are not identical with ingredient name, create a new map
+              //if amount for specified ingredients of that unit type (oz, cups, etc) 
+              //does not exist we create a new map 
               if (!unitAmountMap) {
                 unitAmountMap = new Map()
               } else {
+                //if exist we get ingredient amount
                 const storedUnitAmount = unitAmountMap.get(ingredient.unit);
 
-                //add amount if units are identical in the ingredient
+                //if stored amount is greater than 0, add to total
                 if (storedUnitAmount) {
                   unitAmount += storedUnitAmount
                 }
               }
 
+              //set the amount to unit amount map
               unitAmountMap.set(ingredient.unit, unitAmount)
+              //store unit amount map into IngredientList map
               this.IngredientsList.set(ingredient.name, unitAmountMap)
           })
         })
