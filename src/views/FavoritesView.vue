@@ -125,7 +125,6 @@ export default {
       if (!recipeids.includes(clickedRecipeId)) {
         recipeids.push(clickedRecipeId)
 
-        console.log("Update recipe ids: " , recipeids)
         //update user shopping lists
         await db.collection('shoppingLists')
         .doc(shoppingListId)
